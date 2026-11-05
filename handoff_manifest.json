@@ -1,0 +1,115 @@
+{
+  "source_commit": "0df78f85feabe9fe7d3cc82c346f75b7d6cfb1bf",
+  "epoch": 3,
+  "next_epoch": 4,
+  "global_step": 120128,
+  "best_metric": 0.5183535874812718,
+  "source_checkpoint": "/home/user/zhangguoli/species_identification/runs/bacteria_species961_train1000_seed42_v1_finetune/checkpoint_epoch003.pt",
+  "best_checkpoint": "/home/user/zhangguoli/species_identification/runs/bacteria_species961_train1000_seed42_v1_finetune/checkpoint_epoch003.pt",
+  "runtime": {
+    "python": "3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]",
+    "torch": "2.1.0+cu121",
+    "cuda": "12.1"
+  },
+  "examples": [
+    {
+      "split": "train",
+      "row": 0,
+      "sha256": "69558665ecde283aad15452b3ee63e863030f0c64f3b2a906dc72ff4e04a77bd"
+    },
+    {
+      "split": "train",
+      "row": 480500,
+      "sha256": "e9384ac1448e8196a0a5dfcdca20163ca5da87da0fdbf9aca651450ffbb5e30b"
+    },
+    {
+      "split": "train",
+      "row": 960999,
+      "sha256": "d4e2db50cc80ba97c91cc7e3ae68d2ee12e3ca62cdb82a7ebdf338537d784c8b"
+    },
+    {
+      "split": "val",
+      "row": 0,
+      "sha256": "4d8bc6833ab7632ee85378be857244988a8a6c9bf2f64ebbd77b7fc799024df6"
+    },
+    {
+      "split": "val",
+      "row": 12012,
+      "sha256": "4baa7430292db7df2d16ba87d73d67e12e2d57cd68f4cab20be569361ddb25b0"
+    },
+    {
+      "split": "val",
+      "row": 24024,
+      "sha256": "035bd91f7726b91393cd31ec9b423a49408695deba99c22088c3d078903c687e"
+    },
+    {
+      "split": "test",
+      "row": 0,
+      "sha256": "81a76e5c7691d59a569e91f167ec2cd9cc1d9c8de96d35cbf7e2852806c78f83"
+    },
+    {
+      "split": "test",
+      "row": 12012,
+      "sha256": "0cec57c2f26671f0b7c9d588a3908deb94711f5463a50630db5d854b853fdb94"
+    },
+    {
+      "split": "test",
+      "row": 24024,
+      "sha256": "736fd1a331485a5aa44035924cbd55aaf3a510e722a8a352e8b308cbf6c02da0"
+    }
+  ],
+  "files": {
+    "handoff_961/best_model.pt": {
+      "bytes": 1386871687,
+      "sha256": "fd6ee9ef4debd469bb090a49d9c26568ee1ac2a09e7b868143cfbcb01a3544ad"
+    },
+    "handoff_961/resume.pt": {
+      "bytes": 1386871687,
+      "sha256": "fd6ee9ef4debd469bb090a49d9c26568ee1ac2a09e7b868143cfbcb01a3544ad"
+    },
+    "handoff_961/source_config.yaml": {
+      "bytes": 1864,
+      "sha256": "89f63da84701faa51989f8bcc8b4f1be9ca143e48fbb1d42f5aa0071e61b14e4"
+    },
+    "index_bacteria_species961_train1000/bacteria_complete.genomic.fna": {
+      "bytes": 50092919987,
+      "sha256": "b7b9826e5b19ac60e009fd93ed1346b4a4dcff30d46e6fa232ef95bb8cff61fd"
+    },
+    "index_bacteria_species961_train1000/cleaning_records.tsv": {
+      "bytes": 11524783,
+      "sha256": "b0ff81403641241289cbb96834cd71958b8a92de8acdb612c889e62be7faef96"
+    },
+    "index_bacteria_species961_train1000/config_data.yaml": {
+      "bytes": 1868,
+      "sha256": "9ceec736ba3c2f0293b5cf13c5eaee60969d3ff573eedc31c7b0672177d04908"
+    },
+    "index_bacteria_species961_train1000/data_report.json": {
+      "bytes": 60817,
+      "sha256": "802af7ae2e178fc7ac143f4d24f7c3adc25f673215e78fc84265ed5077848e36"
+    },
+    "index_bacteria_species961_train1000/dataset_metadata.json": {
+      "bytes": 3400653,
+      "sha256": "d328a87fffe9a0c68af8a1aae8a3a95695e044a926b93ac046a438e168efc078"
+    },
+    "index_bacteria_species961_train1000/expansion_baseline.tsv": {
+      "bytes": 1368517,
+      "sha256": "c00b7f70000bea9879e2de10ab771bafe72cf31e00382c5827ff94521f713841"
+    },
+    "index_bacteria_species961_train1000/source_window_checks.json": {
+      "bytes": 10246020,
+      "sha256": "026489d2c61326b96a54d3a6ceda2be0b8cf656ced14e1572a25c94cb32768be"
+    },
+    "index_bacteria_species961_train1000/split_manifest.tsv": {
+      "bytes": 12019906,
+      "sha256": "b82c4038dcb89fc386e7a4f037814ab47423ea5adc3a60c2d33ef329071c7169"
+    },
+    "index_bacteria_species961_train1000/taxonomy_db.pkl": {
+      "bytes": 76991443,
+      "sha256": "2e454c7b3db572920313982e06ecfc2c3439a32c3650d79dcafec2a18a4453fb"
+    },
+    "index_bacteria_species961_train1000/window_index_finetune.pkl": {
+      "bytes": 25190777,
+      "sha256": "c8199eb964213be34372a3619d6432db3b5885a59074bd60f6c1dc2b14c4eb3d"
+    }
+  }
+}
