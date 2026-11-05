@@ -1,0 +1,28 @@
+{
+  "status": "CPU_CHECK_PASSED",
+  "checkpoint_epoch": 3,
+  "global_step": 120128,
+  "strict_model_load": true,
+  "optimizer_load": true,
+  "batch_shapes": {
+    "train": [
+      4,
+      4076,
+      21
+    ],
+    "val": [
+      4,
+      4076,
+      21
+    ],
+    "test": [
+      4,
+      4076,
+      21
+    ]
+  },
+  "python": "3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]",
+  "torch": "2.1.0+cu121",
+  "cuda": "12.1",
+  "gpu_test": "not performed on login node"
+}
