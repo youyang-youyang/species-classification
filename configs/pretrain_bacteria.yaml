@@ -1,0 +1,93 @@
+# 预训练配置 - 全细菌参考基因组 MLM
+# 用法: python scripts/pretrain.py --config configs/pretrain_bacteria.yaml
+
+experiment_name: "bacteria_species_cls_v1"
+output_dir: "./runs"
+seed: 42
+mode: "pretrain"
+
+model:
+  # 嵌入层
+  base_vocab_size: 5
+  kmer_size: 21
+  d_model: 768
+  max_seq_len: 4076    # 4096bp → 4096-21+1=4076 tokens
+
+  # CNN Stem
+  cnn_num_layers: 3
+  cnn_kernel_size: 3
+  cnn_dilations: [1, 2, 4]
+
+  # Transformer
+  n_layers: 12
+  n_heads: 12
+  d_ff: 3072
+  dropout: 0.1
+  attention_window: 256
+
+  # 唯一性偏置 (预训练时不使用, 但参数仍然初始化)
+  beta_init: 0.5
+  w_b_init: 1.0
+
+  # 多尺度池化 (预训练时不使用)
+  pool_kernels: [3, 10, 50]
+  pool_strides: [1, 2, 10]
+  gamma: 2.0
+  d_fingerprint: 768
+
+  # 分类头 (预训练时不使用)
+  cls_dropout: 0.1
+  cls_hidden_dim: 512
+
+  # 子窗口分治
+  use_subwindow: true
+  sub_window_size_bp: 1024
+  n_sub_windows: 4
+
+data:
+  # 数据路径 (KmerFormer 基础设施)
+  fna_file: "/home/user/zhangguoli/species_identification/utils/kmc_refseq/raw/bacteria.genomic.fna"
+  scores_file: "/home/user/xiezheng/kmc_refseq/scores/bacteria_scores.txt"
+  taxdump_dir: "/home/user/zhangguoli/species_identification/utils/taxonomy_data/new_taxdump"
+
+  # 索引路径
+  index_dir: "./index_bacteria"
+  scores_bin_file: ""
+
+  # 窗口参数
+  window_size_bp: 4096
+  window_stride_bp: 2048
+
+  # DataLoader
+  num_workers: 4
+  pin_memory: true
+
+  # 分类层级
+  taxonomy_levels: ["domain", "phylum", "class", "order", "family", "genus", "species"]
+
+training:
+  # 预训练
+  pretrain_epochs: 5
+  pretrain_lr: 0.0005        # 5e-4
+  pretrain_weight_decay: 0.01
+  mlm_mask_ratio: 0.15
+
+  # 通用
+  batch_size_per_gpu: 2
+  gradient_accumulation_steps: 32    # 有效 batch = 8 × 4 × 4GPU = 128
+  warmup_steps: 2000
+  max_grad_norm: 1.0
+  precision: "bf16"
+  scheduler: "cosine"
+
+  # 采样
+  steps_per_epoch: 15000
+  val_steps: 500
+
+  # Checkpoint
+  save_interval: 1
+  early_stop_patience: 0       # 预训练不早停
+  early_stop_metric: "mlm_acc"
+
+  # GPU
+  gpu_ids: [0, 1, 2, 3]

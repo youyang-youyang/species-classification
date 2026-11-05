@@ -1,0 +1,104 @@
+# 微调配置 - 全细菌物种分类
+# 用法: torchrun --nproc_per_node=4 scripts/finetune.py \
+#           --config configs/finetune_bacteria.yaml \
+#           --pretrained runs/bacteria_species_cls_v1_pretrain/best_model.pt
+
+experiment_name: "bacteria_species_cls_v1"
+output_dir: "./runs"
+seed: 42
+mode: "finetune"
+
+model:
+  # 嵌入层 (与预训练保持一致!)
+  base_vocab_size: 5
+  kmer_size: 21
+  d_model: 768
+  max_seq_len: 4076
+
+  # CNN Stem (与预训练一致)
+  cnn_num_layers: 3
+  cnn_kernel_size: 3
+  cnn_dilations: [1, 2, 4]
+
+  # Transformer (与预训练一致)
+  n_layers: 12
+  n_heads: 12
+  d_ff: 3072
+  dropout: 0.1
+  attention_window: 4096   # 全注意力，与预训练一致
+
+  # 唯一性偏置 (微调时激活!)
+  beta_init: 0.5
+  w_b_init: 1.0
+
+  # 多尺度池化 (微调时激活!)
+  pool_kernels: [3, 10, 50]
+  pool_strides: [1, 2, 10]
+  gamma: 2.0
+  d_fingerprint: 768
+
+  # 分类头 (微调时激活!)
+  cls_dropout: 0.1
+  cls_hidden_dim: 512
+
+  # 子窗口分治
+  use_subwindow: false              # 精度优先: 与预训练一致，全序列完整注意力
+  sub_window_size_bp: 1024           # 不生效
+  n_sub_windows: 4
+
+data:
+  # 数据路径 (对齐服务器真实路径 /home/user/zhangguoli/species_identification/...)
+  fna_file: "/home/user/zhangguoli/species_identification/utils/kmc_refseq/raw/bacteria.genomic.fna"
+  scores_file: "/home/user/zhangguoli/species_identification/utils/kmc_refseq/scores/bacteria_scores.txt"
+  taxdump_dir: "/home/user/zhangguoli/species_identification/utils/taxonomy_data/new_taxdump"
+  phylo_file: "/home/user/zhangguoli/species_identification/utils/gtdb/bacteria_fna_phylo_embeddings.pt"
+
+  # 索引路径
+  index_dir: "./index_bacteria"
+  scores_bin_file: "./index_bacteria/bacteria_scores.bin"    # 预转换的二进制格式
+
+  # 窗口参数
+  window_size_bp: 4096
+  window_stride_bp: 2048
+
+  # DataLoader
+  num_workers: 4
+  pin_memory: true
+
+  taxonomy_levels: ["domain", "phylum", "class", "order", "family", "genus", "species"]
+
+training:
+  # 微调
+  finetune_epochs: 50
+  finetune_lr: 0.00002         # 2e-5 (预训练层)
+  finetune_weight_decay: 0.01
+  guidance_dropout: 0.5       # 每个训练 batch 同时关闭 P/U 的概率；验证固定纯 DNA
+  # 新增层学习率 = finetune_lr × 10 = 2e-4 (在 finetune.py 中设置)
+
+  # 通用
+  batch_size_per_gpu: 4              # 全序列模式B=4安全
+  gradient_accumulation_steps: 8    # 有效 batch = 4 × 8 × 4GPU = 128
+  warmup_steps: 3000                # 延长 warmup 对齐实际步数
+  max_grad_norm: 1.0
+  precision: "bf16"
+  scheduler: "cosine"
+
+  # 采样
+  steps_per_epoch: 15000
+  val_steps: 2000
+
+  # 损失权重 (设计文档 §4.1.5)
+  # L_total = L_CE + λ₁·L_hier + λ₂·L_contrast + λ₃·L_focus
+  lambda_hier: 0.1
+  lambda_contrast: 0.5
+  lambda_focus: 0.3
+  delta_focus: 5.0
+  tau_contrast: 0.07
+
+  # Checkpoint
+  save_interval: 5
+  early_stop_patience: 10
+  early_stop_metric: "species"
+
+  # GPU
+  gpu_ids: [0, 1, 2, 3]

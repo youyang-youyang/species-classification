@@ -1,0 +1,91 @@
+data:
+  dna_only: true
+  fna_file: /home/user/zhangguoli/species_identification/index_bacteria_small32_train1000/bacteria_complete.genomic.fna
+  index_dir: /home/user/zhangguoli/species_identification/index_bacteria_small32_train1000
+  num_workers: 4
+  phylo_file: ''
+  pin_memory: true
+  scores_bin_file: ''
+  scores_file: ''
+  taxdump_dir: /home/user/zhangguoli/species_identification/utils/taxonomy_data/new_taxdump
+  taxonomy_levels:
+  - domain
+  - phylum
+  - class
+  - order
+  - family
+  - genus
+  - species
+  window_size_bp: 4096
+  window_stride_bp: 2048
+experiment_name: bacteria_small32_train1000_seed43_v1
+mode: finetune
+model:
+  attention_window: 4096
+  base_vocab_size: 5
+  beta_init: 0.5
+  cls_dropout: 0.1
+  cls_hidden_dim: 512
+  cnn_dilations:
+  - 1
+  - 2
+  - 4
+  cnn_kernel_size: 3
+  cnn_num_layers: 3
+  d_ff: 3072
+  d_fingerprint: 768
+  d_model: 768
+  dropout: 0.1
+  gamma: 2.0
+  kmer_size: 21
+  max_seq_len: 4076
+  n_heads: 12
+  n_layers: 12
+  n_sub_windows: 4
+  pool_kernels:
+  - 3
+  - 10
+  - 50
+  pool_strides:
+  - 1
+  - 2
+  - 10
+  sub_window_size_bp: 1024
+  use_subwindow: true
+  w_b_init: 1.0
+output_dir: ./runs
+seed: 43
+training:
+  batch_size_per_gpu: 4
+  classification_loss_only: false
+  delta_focus: 5.0
+  disable_phylo: true
+  early_stop_metric: species
+  early_stop_patience: 0
+  finetune_epochs: 10
+  finetune_lr: 2.0e-05
+  finetune_weight_decay: 0.01
+  gpu_ids:
+  - 0
+  - 1
+  - 2
+  - 3
+  gradient_accumulation_steps: 8
+  guidance_dropout: 1.0
+  lambda_contrast: 0.5
+  lambda_focus: 0.3
+  lambda_hier: 0.1
+  max_grad_norm: 1.0
+  mlm_mask_ratio: 0.15
+  precision: bf16
+  pretrain_epochs: 5
+  pretrain_lr: 0.0005
+  pretrain_weight_decay: 0.01
+  save_interval: 5
+  scheduler: cosine
+  species_balanced_fraction: 0.0
+  steps_per_epoch: null
+  tau_contrast: 0.07
+  track_species_exposure: true
+  val_steps: null
+  warmup_steps: 200
