@@ -4,6 +4,14 @@
 GitHub 不包含约 47G 的 FASTA、索引和模型。接收者必须另行取得 `species961_payload.tar`。
 它包含完整 `index_bacteria_species961_train1000/`，及 `handoff_961/` 下的固定续训断点、该轮之前的最佳模型、原配置、SHA256清单和原服务器抽查窗口哈希。
 
+下载完成后，Mac 可用系统 Python 检查整个包，无需安装训练环境：
+
+```bash
+python3 scripts/handoff_961.py check-archive --archive /收到文件的路径/species961_payload.tar
+```
+
+出现 `ARCHIVE_CHECK_PASSED` 才说明传输文件完整。仓库 `source_validation.json` 记录了原服务器上已通过的严格模型加载、优化器恢复和真实数据批次读取检查；不代表对方 H100 已完成验收。
+
 ## H100 接收方执行
 
 Linux x86_64、NVIDIA 驱动支持 CUDA 12.1、单卡。准备足够 CPU 内存加载索引和约1.3G checkpoint。

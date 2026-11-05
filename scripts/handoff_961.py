@@ -28,6 +28,32 @@ def digest(path):
     return h.hexdigest()
 
 
+def check_archive(path):
+    """Verify a downloaded tar on Mac/Linux with Python stdlib only; no extraction."""
+    seen = {}
+    manifest = None
+    with tarfile.open(path, 'r|*') as tar:
+        for member in tar:
+            if not member.isfile() or member.name in seen:
+                raise ValueError(f'Unexpected/duplicate archive entry: {member.name}')
+            stream = tar.extractfile(member)
+            if member.name == 'handoff_961/manifest.json':
+                if manifest is not None:
+                    raise ValueError('Duplicate manifest')
+                manifest = json.load(stream)
+                continue
+            h = hashlib.sha256()
+            size = 0
+            for block in iter(lambda: stream.read(8*1024*1024), b''):
+                size += len(block)
+                h.update(block)
+            seen[member.name] = dict(bytes=size, sha256=h.hexdigest())
+            print('Read', member.name, flush=True)
+    if manifest is None or seen != manifest['files']:
+        raise ValueError('Archive incomplete or checksum mismatch')
+    print('ARCHIVE_CHECK_PASSED', path)
+
+
 def stable_copy(source, dest):
     before = source.stat()
     shutil.copy2(source, dest)
@@ -254,11 +280,15 @@ def smoke():
 
 if __name__ == '__main__':
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('action',choices=['package','verify','smoke'])
+    p.add_argument('action',choices=['package','verify','smoke','check-archive'])
     p.add_argument('--output',type=Path)
+    p.add_argument('--archive',type=Path)
     a=p.parse_args()
     if a.action=='package':
         if a.output is None: p.error('package requires --output (a new directory)')
         package(a.output)
+    elif a.action=='check-archive':
+        if a.archive is None: p.error('check-archive requires --archive')
+        check_archive(a.archive)
     elif a.action=='verify': verify()
     else: smoke()
