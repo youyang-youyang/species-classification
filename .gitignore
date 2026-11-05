@@ -21,3 +21,8 @@ __pycache__/
 *.log
 /runs/
 /index_bacteria*/
+/handoff_961/
+/runs_h100/
+configs/finetune_species961_h100.yaml
+*.tar
+*.bundle

@@ -1,0 +1,7 @@
+# Versions used by the source server; torch is installed separately from cu121.
+numpy==1.24.4
+scipy==1.15.3
+scikit-learn==1.7.2
+pandas==2.3.3
+tqdm==4.67.1
+PyYAML==6.0.3
