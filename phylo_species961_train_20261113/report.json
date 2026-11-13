@@ -1,0 +1,2930 @@
+{
+  "seed": 42,
+  "dimension": 64,
+  "epochs": 20,
+  "burn_in": 2,
+  "workers": 1,
+  "method": "Poincare parent-child topology embedding on train-target ancestral subtree",
+  "branch_lengths_used": false,
+  "split": "train",
+  "train_records": 14840,
+  "species": 961,
+  "real_vector_species": 960,
+  "missing_species": [
+    "114186"
+  ],
+  "mapping_counts": {
+    "assembly_exact": 14791,
+    "ncbi_species_proxy": 40,
+    "missing_zero": 9
+  },
+  "species_mapping": {
+    "155978": {
+      "assembly_exact": 9
+    },
+    "1515": {
+      "assembly_exact": 3
+    },
+    "435": {
+      "assembly_exact": 3
+    },
+    "481146": {
+      "assembly_exact": 4
+    },
+    "438": {
+      "assembly_exact": 35
+    },
+    "2148": {
+      "assembly_exact": 1
+    },
+    "1353891": {
+      "assembly_exact": 1
+    },
+    "32002": {
+      "assembly_exact": 3
+    },
+    "217204": {
+      "assembly_exact": 3
+    },
+    "217203": {
+      "assembly_exact": 4
+    },
+    "85698": {
+      "assembly_exact": 15
+    },
+    "1748": {
+      "assembly_exact": 5
+    },
+    "1749": {
+      "assembly_exact": 2
+    },
+    "33059": {
+      "assembly_exact": 5
+    },
+    "920": {
+      "assembly_exact": 5
+    },
+    "553814": {
+      "assembly_exact": 3
+    },
+    "80869": {
+      "assembly_exact": 6
+    },
+    "202950": {
+      "assembly_exact": 2
+    },
+    "106648": {
+      "assembly_exact": 9
+    },
+    "471": {
+      "assembly_exact": 3
+    },
+    "29430": {
+      "assembly_exact": 20
+    },
+    "756892": {
+      "assembly_exact": 35
+    },
+    "40214": {
+      "assembly_exact": 32
+    },
+    "40215": {
+      "assembly_exact": 12
+    },
+    "28090": {
+      "assembly_exact": 20
+    },
+    "106654": {
+      "assembly_exact": 14
+    },
+    "48296": {
+      "assembly_exact": 48
+    },
+    "40216": {
+      "assembly_exact": 8
+    },
+    "108981": {
+      "assembly_exact": 23
+    },
+    "1530123": {
+      "assembly_exact": 44
+    },
+    "202956": {
+      "assembly_exact": 10
+    },
+    "108980": {
+      "assembly_exact": 17
+    },
+    "70346": {
+      "assembly_exact": 12
+    },
+    "718": {
+      "assembly_exact": 19
+    },
+    "254839": {
+      "assembly_exact": 1
+    },
+    "715": {
+      "assembly_exact": 28
+    },
+    "716": {
+      "assembly_exact": 1
+    },
+    "544580": {
+      "assembly_exact": 2
+    },
+    "51665": {
+      "assembly_exact": 5
+    },
+    "648": {
+      "assembly_exact": 40
+    },
+    "196024": {
+      "assembly_exact": 9
+    },
+    "29489": {
+      "assembly_exact": 2
+    },
+    "644": {
+      "assembly_exact": 44
+    },
+    "650": {
+      "assembly_exact": 3
+    },
+    "651": {
+      "assembly_exact": 17
+    },
+    "645": {
+      "assembly_exact": 44
+    },
+    "654": {
+      "assembly_exact": 42
+    },
+    "714": {
+      "assembly_exact": 22
+    },
+    "732": {
+      "assembly_exact": 3
+    },
+    "358": {
+      "assembly_exact": 138
+    },
+    "1176649": {
+      "assembly_exact": 54
+    },
+    "160699": {
+      "assembly_exact": 4
+    },
+    "648995": {
+      "assembly_exact": 24
+    },
+    "359": {
+      "assembly_exact": 9
+    },
+    "2946555": {
+      "assembly_exact": 1,
+      "ncbi_species_proxy": 2
+    },
+    "239935": {
+      "assembly_exact": 63
+    },
+    "2927224": {
+      "assembly_exact": 9
+    },
+    "323284": {
+      "assembly_exact": 1
+    },
+    "511": {
+      "assembly_exact": 14
+    },
+    "28197": {
+      "assembly_exact": 8
+    },
+    "28198": {
+      "assembly_exact": 9
+    },
+    "179636": {
+      "assembly_exact": 5
+    },
+    "154981": {
+      "assembly_exact": 12
+    },
+    "328813": {
+      "assembly_exact": 3
+    },
+    "79880": {
+      "assembly_exact": 2
+    },
+    "2935863": {
+      "assembly_exact": 1
+    },
+    "28108": {
+      "assembly_exact": 18
+    },
+    "314275": {
+      "assembly_exact": 20
+    },
+    "233316": {
+      "assembly_exact": 2
+    },
+    "33910": {
+      "assembly_exact": 2
+    },
+    "105841": {
+      "assembly_exact": 2
+    },
+    "948": {
+      "assembly_exact": 4
+    },
+    "148814": {
+      "assembly_exact": 1
+    },
+    "1750": {
+      "assembly_exact": 4
+    },
+    "638": {
+      "assembly_exact": 59
+    },
+    "656366": {
+      "assembly_exact": 2
+    },
+    "565": {
+      "assembly_exact": 3
+    },
+    "678932": {
+      "assembly_exact": 6
+    },
+    "728": {
+      "assembly_exact": 12
+    },
+    "192": {
+      "assembly_exact": 26
+    },
+    "353": {
+      "assembly_exact": 4
+    },
+    "354": {
+      "assembly_exact": 1
+    },
+    "293387": {
+      "assembly_exact": 29
+    },
+    "1390": {
+      "assembly_exact": 57,
+      "ncbi_species_proxy": 1
+    },
+    "492670": {
+      "assembly_exact": 225
+    },
+    "1392": {
+      "assembly_exact": 128
+    },
+    "1452": {
+      "assembly_exact": 7
+    },
+    "580165": {
+      "assembly_exact": 22
+    },
+    "1664069": {
+      "assembly_exact": 3
+    },
+    "260554": {
+      "assembly_exact": 11
+    },
+    "483913": {
+      "assembly_exact": 3
+    },
+    "96241": {
+      "assembly_exact": 3
+    },
+    "1402": {
+      "assembly_exact": 30
+    },
+    "1405": {
+      "assembly_exact": 71
+    },
+    "1648923": {
+      "assembly_exact": 19
+    },
+    "2026186": {
+      "assembly_exact": 18
+    },
+    "1408": {
+      "assembly_exact": 12
+    },
+    "561879": {
+      "assembly_exact": 15
+    },
+    "659243": {
+      "assembly_exact": 2
+    },
+    "1423": {
+      "assembly_exact": 208,
+      "ncbi_species_proxy": 1
+    },
+    "1428": {
+      "assembly_exact": 134
+    },
+    "155322": {
+      "assembly_exact": 33
+    },
+    "2026188": {
+      "assembly_exact": 15
+    },
+    "1890302": {
+      "assembly_exact": 13
+    },
+    "47678": {
+      "assembly_exact": 4
+    },
+    "246787": {
+      "assembly_exact": 3
+    },
+    "674529": {
+      "assembly_exact": 5
+    },
+    "817": {
+      "assembly_exact": 14
+    },
+    "28116": {
+      "assembly_exact": 16
+    },
+    "291644": {
+      "assembly_exact": 1
+    },
+    "818": {
+      "assembly_exact": 14
+    },
+    "820": {
+      "assembly_exact": 11
+    },
+    "371601": {
+      "assembly_exact": 10
+    },
+    "774": {
+      "assembly_exact": 1
+    },
+    "38323": {
+      "assembly_exact": 11
+    },
+    "2267275": {
+      "assembly_exact": 13
+    },
+    "803": {
+      "assembly_exact": 2
+    },
+    "959": {
+      "assembly_exact": 3
+    },
+    "47735": {
+      "assembly_exact": 2
+    },
+    "1680": {
+      "assembly_exact": 7
+    },
+    "28025": {
+      "assembly_exact": 27
+    },
+    "1684": {
+      "assembly_exact": 1
+    },
+    "1681": {
+      "assembly_exact": 11
+    },
+    "1685": {
+      "assembly_exact": 37
+    },
+    "1686": {
+      "assembly_exact": 2
+    },
+    "1689": {
+      "assembly_exact": 3
+    },
+    "216816": {
+      "assembly_exact": 68
+    },
+    "28026": {
+      "assembly_exact": 8
+    },
+    "1694": {
+      "assembly_exact": 6
+    },
+    "1079": {
+      "assembly_exact": 1
+    },
+    "1653831": {
+      "assembly_exact": 18
+    },
+    "164514": {
+      "assembly_exact": 8
+    },
+    "33035": {
+      "assembly_exact": 1
+    },
+    "2945587": {
+      "assembly_exact": 1
+    },
+    "700220": {
+      "assembly_exact": 3
+    },
+    "521": {
+      "assembly_exact": 4
+    },
+    "518": {
+      "assembly_exact": 19
+    },
+    "103855": {
+      "assembly_exact": 14
+    },
+    "35814": {
+      "assembly_exact": 52
+    },
+    "519": {
+      "assembly_exact": 72
+    },
+    "520": {
+      "assembly_exact": 410
+    },
+    "123899": {
+      "assembly_exact": 2
+    },
+    "140": {
+      "assembly_exact": 16
+    },
+    "47466": {
+      "assembly_exact": 181
+    },
+    "142": {
+      "assembly_exact": 25
+    },
+    "664662": {
+      "assembly_exact": 3
+    },
+    "139": {
+      "assembly_exact": 122
+    },
+    "29519": {
+      "assembly_exact": 5
+    },
+    "159": {
+      "assembly_exact": 10
+    },
+    "52584": {
+      "assembly_exact": 8
+    },
+    "858423": {
+      "assembly_exact": 2
+    },
+    "2992140": {
+      "assembly_exact": 15
+    },
+    "1355477": {
+      "assembly_exact": 12
+    },
+    "375": {
+      "assembly_exact": 3
+    },
+    "2840469": {
+      "assembly_exact": 1
+    },
+    "1393": {
+      "assembly_exact": 3
+    },
+    "1465": {
+      "assembly_exact": 4
+    },
+    "273384": {
+      "assembly_exact": 4
+    },
+    "33889": {
+      "assembly_exact": 3
+    },
+    "293": {
+      "assembly_exact": 1
+    },
+    "588932": {
+      "assembly_exact": 1
+    },
+    "41276": {
+      "assembly_exact": 1
+    },
+    "2756": {
+      "assembly_exact": 4
+    },
+    "235": {
+      "assembly_exact": 36
+    },
+    "529": {
+      "assembly_exact": 22
+    },
+    "36855": {
+      "assembly_exact": 12
+    },
+    "94625": {
+      "assembly_exact": 4
+    },
+    "29459": {
+      "assembly_exact": 105
+    },
+    "120576": {
+      "assembly_exact": 2
+    },
+    "29461": {
+      "assembly_exact": 36
+    },
+    "9": {
+      "assembly_exact": 36
+    },
+    "152480": {
+      "assembly_exact": 24
+    },
+    "95486": {
+      "assembly_exact": 60
+    },
+    "292": {
+      "assembly_exact": 40
+    },
+    "488447": {
+      "assembly_exact": 47
+    },
+    "152500": {
+      "assembly_exact": 9
+    },
+    "28095": {
+      "assembly_exact": 28
+    },
+    "337": {
+      "assembly_exact": 137
+    },
+    "482957": {
+      "assembly_exact": 3
+    },
+    "488446": {
+      "assembly_exact": 4
+    },
+    "13373": {
+      "assembly_exact": 45
+    },
+    "87883": {
+      "assembly_exact": 118
+    },
+    "342113": {
+      "assembly_exact": 6
+    },
+    "60550": {
+      "assembly_exact": 10
+    },
+    "430531": {
+      "assembly_exact": 3
+    },
+    "57975": {
+      "assembly_exact": 35
+    },
+    "101571": {
+      "assembly_exact": 16
+    },
+    "60552": {
+      "assembly_exact": 27
+    },
+    "301953": {
+      "assembly_exact": 1
+    },
+    "215580": {
+      "assembly_exact": 1
+    },
+    "199": {
+      "assembly_exact": 13
+    },
+    "200": {
+      "assembly_exact": 2
+    },
+    "196": {
+      "assembly_exact": 30
+    },
+    "1813019": {
+      "assembly_exact": 1
+    },
+    "198": {
+      "assembly_exact": 4
+    },
+    "1244531": {
+      "assembly_exact": 1
+    },
+    "260714": {
+      "assembly_exact": 1
+    },
+    "201": {
+      "assembly_exact": 11
+    },
+    "1965231": {
+      "assembly_exact": 3
+    },
+    "206": {
+      "assembly_exact": 3
+    },
+    "1031542": {
+      "assembly_exact": 1
+    },
+    "186490": {
+      "assembly_exact": 1
+    },
+    "108080": {
+      "assembly_exact": 1
+    },
+    "251540": {
+      "assembly_exact": 1
+    },
+    "114186": {
+      "missing_zero": 9
+    },
+    "1922217": {
+      "assembly_exact": 14
+    },
+    "336810": {
+      "assembly_exact": 41,
+      "ncbi_species_proxy": 3
+    },
+    "34021": {
+      "assembly_exact": 9
+    },
+    "1884914": {
+      "assembly_exact": 1
+    },
+    "1884913": {
+      "assembly_exact": 1
+    },
+    "1884905": {
+      "assembly_exact": 2
+    },
+    "91844": {
+      "assembly_exact": 8
+    },
+    "669502": {
+      "assembly_exact": 2
+    },
+    "472834": {
+      "assembly_exact": 3
+    },
+    "1081631": {
+      "assembly_exact": 1
+    },
+    "28188": {
+      "assembly_exact": 4
+    },
+    "1018": {
+      "assembly_exact": 4
+    },
+    "1019": {
+      "assembly_exact": 2
+    },
+    "2751": {
+      "assembly_exact": 1
+    },
+    "88688": {
+      "assembly_exact": 1
+    },
+    "155892": {
+      "assembly_exact": 5
+    },
+    "158822": {
+      "assembly_exact": 2
+    },
+    "1708": {
+      "assembly_exact": 1
+    },
+    "979": {
+      "assembly_exact": 1
+    },
+    "1710": {
+      "assembly_exact": 5
+    },
+    "1063": {
+      "assembly_exact": 31
+    },
+    "83555": {
+      "assembly_exact": 8
+    },
+    "1457153": {
+      "assembly_exact": 8
+    },
+    "83560": {
+      "assembly_exact": 20
+    },
+    "85991": {
+      "assembly_exact": 7
+    },
+    "83558": {
+      "assembly_exact": 10
+    },
+    "83554": {
+      "assembly_exact": 20
+    },
+    "83559": {
+      "assembly_exact": 7
+    },
+    "813": {
+      "assembly_exact": 79
+    },
+    "2821541": {
+      "assembly_exact": 8
+    },
+    "536": {
+      "assembly_exact": 5
+    },
+    "651561": {
+      "assembly_exact": 1
+    },
+    "253": {
+      "assembly_exact": 9
+    },
+    "254": {
+      "assembly_exact": 1
+    },
+    "1493872": {
+      "assembly_exact": 1
+    },
+    "536441": {
+      "assembly_exact": 2
+    },
+    "35703": {
+      "assembly_exact": 15
+    },
+    "57706": {
+      "assembly_exact": 22
+    },
+    "546": {
+      "assembly_exact": 93
+    },
+    "545": {
+      "assembly_exact": 15
+    },
+    "1639133": {
+      "assembly_exact": 36
+    },
+    "67827": {
+      "assembly_exact": 5
+    },
+    "28447": {
+      "assembly_exact": 26
+    },
+    "31963": {
+      "assembly_exact": 9
+    },
+    "1874630": {
+      "assembly_exact": 2
+    },
+    "1488": {
+      "assembly_exact": 2
+    },
+    "1520": {
+      "assembly_exact": 10
+    },
+    "1491": {
+      "assembly_exact": 62
+    },
+    "1492": {
+      "assembly_exact": 24
+    },
+    "46867": {
+      "assembly_exact": 2
+    },
+    "238834": {
+      "assembly_exact": 16
+    },
+    "36839": {
+      "assembly_exact": 6
+    },
+    "1534": {
+      "assembly_exact": 4
+    },
+    "1501": {
+      "assembly_exact": 5
+    },
+    "1502": {
+      "assembly_exact": 79
+    },
+    "169679": {
+      "assembly_exact": 3
+    },
+    "1504": {
+      "assembly_exact": 2
+    },
+    "1509": {
+      "assembly_exact": 8
+    },
+    "1513": {
+      "assembly_exact": 2
+    },
+    "1519": {
+      "assembly_exact": 2
+    },
+    "279058": {
+      "assembly_exact": 1
+    },
+    "74426": {
+      "assembly_exact": 4
+    },
+    "225991": {
+      "assembly_exact": 2
+    },
+    "285": {
+      "assembly_exact": 3
+    },
+    "363952": {
+      "assembly_exact": 6
+    },
+    "43765": {
+      "assembly_exact": 5
+    },
+    "169292": {
+      "assembly_exact": 2
+    },
+    "1717": {
+      "assembly_exact": 40
+    },
+    "39791": {
+      "assembly_exact": 3
+    },
+    "1718": {
+      "assembly_exact": 30
+    },
+    "38289": {
+      "assembly_exact": 2
+    },
+    "35755": {
+      "assembly_exact": 2
+    },
+    "38290": {
+      "assembly_exact": 1
+    },
+    "38301": {
+      "assembly_exact": 3
+    },
+    "43769": {
+      "assembly_exact": 1
+    },
+    "37637": {
+      "assembly_exact": 1
+    },
+    "1719": {
+      "assembly_exact": 124
+    },
+    "2320431": {
+      "assembly_exact": 6
+    },
+    "1705": {
+      "assembly_exact": 1
+    },
+    "43770": {
+      "assembly_exact": 5
+    },
+    "2883169": {
+      "assembly_exact": 4
+    },
+    "65058": {
+      "assembly_exact": 14
+    },
+    "43771": {
+      "assembly_exact": 3
+    },
+    "777": {
+      "assembly_exact": 19
+    },
+    "413497": {
+      "assembly_exact": 4
+    },
+    "28141": {
+      "assembly_exact": 23
+    },
+    "82541": {
+      "assembly_exact": 3
+    },
+    "119219": {
+      "assembly_exact": 16
+    },
+    "106590": {
+      "assembly_exact": 12
+    },
+    "96344": {
+      "assembly_exact": 4
+    },
+    "82633": {
+      "assembly_exact": 5
+    },
+    "2035": {
+      "assembly_exact": 10
+    },
+    "1747": {
+      "assembly_exact": 28
+    },
+    "33010": {
+      "assembly_exact": 5
+    },
+    "77022": {
+      "assembly_exact": 1
+    },
+    "1399": {
+      "assembly_exact": 4
+    },
+    "665099": {
+      "assembly_exact": 4
+    },
+    "281362": {
+      "assembly_exact": 1
+    },
+    "61435": {
+      "assembly_exact": 20
+    },
+    "1299": {
+      "assembly_exact": 44
+    },
+    "80866": {
+      "assembly_exact": 5
+    },
+    "558537": {
+      "assembly_exact": 2
+    },
+    "180282": {
+      "assembly_exact": 4
+    },
+    "876": {
+      "assembly_exact": 1
+    },
+    "881": {
+      "assembly_exact": 5
+    },
+    "204038": {
+      "assembly_exact": 4
+    },
+    "204039": {
+      "assembly_exact": 11
+    },
+    "1778540": {
+      "assembly_exact": 9
+    },
+    "1089444": {
+      "assembly_exact": 11
+    },
+    "204042": {
+      "assembly_exact": 5
+    },
+    "29394": {
+      "assembly_exact": 11
+    },
+    "1619313": {
+      "assembly_exact": 2
+    },
+    "1821960": {
+      "assembly_exact": 4
+    },
+    "67780": {
+      "assembly_exact": 9
+    },
+    "1263550": {
+      "assembly_exact": 17
+    },
+    "636": {
+      "assembly_exact": 9
+    },
+    "84112": {
+      "assembly_exact": 8
+    },
+    "944": {
+      "assembly_exact": 2
+    },
+    "945": {
+      "assembly_exact": 6
+    },
+    "779": {
+      "assembly_exact": 8
+    },
+    "1117645": {
+      "assembly_exact": 44
+    },
+    "238": {
+      "assembly_exact": 4
+    },
+    "172045": {
+      "assembly_exact": 2
+    },
+    "106592": {
+      "assembly_exact": 30
+    },
+    "61645": {
+      "assembly_exact": 46
+    },
+    "881260": {
+      "assembly_exact": 13
+    },
+    "69218": {
+      "assembly_exact": 6
+    },
+    "550": {
+      "assembly_exact": 34
+    },
+    "208224": {
+      "assembly_exact": 42
+    },
+    "299767": {
+      "assembly_exact": 26
+    },
+    "539813": {
+      "assembly_exact": 3
+    },
+    "1812935": {
+      "assembly_exact": 56
+    },
+    "208479": {
+      "assembly_exact": 3
+    },
+    "37734": {
+      "assembly_exact": 22
+    },
+    "44008": {
+      "assembly_exact": 8
+    },
+    "53345": {
+      "assembly_exact": 6
+    },
+    "1353": {
+      "assembly_exact": 10
+    },
+    "1354": {
+      "assembly_exact": 29
+    },
+    "357441": {
+      "assembly_exact": 12
+    },
+    "53346": {
+      "assembly_exact": 12
+    },
+    "71452": {
+      "assembly_exact": 7
+    },
+    "552": {
+      "assembly_exact": 26
+    },
+    "55211": {
+      "assembly_exact": 3
+    },
+    "79967": {
+      "assembly_exact": 6
+    },
+    "65700": {
+      "assembly_exact": 7
+    },
+    "1648": {
+      "assembly_exact": 9
+    },
+    "208962": {
+      "assembly_exact": 85
+    },
+    "564": {
+      "assembly_exact": 71
+    },
+    "1499973": {
+      "assembly_exact": 19
+    },
+    "253239": {
+      "assembly_exact": 3
+    },
+    "1736": {
+      "assembly_exact": 1
+    },
+    "41170": {
+      "assembly_exact": 3
+    },
+    "853": {
+      "assembly_exact": 9
+    },
+    "76259": {
+      "assembly_exact": 2
+    },
+    "1260": {
+      "assembly_exact": 3
+    },
+    "459526": {
+      "assembly_exact": 1
+    },
+    "996": {
+      "assembly_exact": 24
+    },
+    "96345": {
+      "assembly_exact": 16
+    },
+    "292800": {
+      "assembly_exact": 2
+    },
+    "1751046": {
+      "assembly_exact": 2
+    },
+    "2007306": {
+      "assembly_exact": 1
+    },
+    "2016517": {
+      "assembly_exact": 1
+    },
+    "299583": {
+      "assembly_exact": 19
+    },
+    "28110": {
+      "assembly_exact": 6
+    },
+    "263": {
+      "assembly_exact": 48
+    },
+    "1625": {
+      "assembly_exact": 1
+    },
+    "76859": {
+      "assembly_exact": 6
+    },
+    "1583098": {
+      "assembly_exact": 8
+    },
+    "859": {
+      "assembly_exact": 1
+    },
+    "851": {
+      "assembly_exact": 4
+    },
+    "76857": {
+      "assembly_exact": 5
+    },
+    "2663009": {
+      "assembly_exact": 7
+    },
+    "861": {
+      "assembly_exact": 1
+    },
+    "155615": {
+      "assembly_exact": 4
+    },
+    "750": {
+      "assembly_exact": 2
+    },
+    "2702": {
+      "assembly_exact": 10
+    },
+    "29391": {
+      "assembly_exact": 1
+    },
+    "129338": {
+      "assembly_exact": 3
+    },
+    "33940": {
+      "assembly_exact": 3
+    },
+    "33941": {
+      "assembly_exact": 2
+    },
+    "35554": {
+      "assembly_exact": 4
+    },
+    "122": {
+      "assembly_exact": 1
+    },
+    "738": {
+      "assembly_exact": 21
+    },
+    "1933880": {
+      "assembly_exact": 1
+    },
+    "36821": {
+      "assembly_exact": 1
+    },
+    "2054": {
+      "assembly_exact": 1
+    },
+    "84595": {
+      "assembly_exact": 2
+    },
+    "2055": {
+      "assembly_exact": 1
+    },
+    "364410": {
+      "assembly_exact": 8
+    },
+    "46124": {
+      "assembly_exact": 1
+    },
+    "673": {
+      "assembly_exact": 4
+    },
+    "197575": {
+      "assembly_exact": 1
+    },
+    "726": {
+      "assembly_exact": 3
+    },
+    "727": {
+      "assembly_exact": 75
+    },
+    "729": {
+      "assembly_exact": 16
+    },
+    "569": {
+      "assembly_exact": 4
+    },
+    "546367": {
+      "assembly_exact": 2
+    },
+    "77097": {
+      "assembly_exact": 1
+    },
+    "664683": {
+      "assembly_exact": 1
+    },
+    "44935": {
+      "assembly_exact": 2
+    },
+    "213": {
+      "assembly_exact": 11
+    },
+    "104628": {
+      "assembly_exact": 9
+    },
+    "80842": {
+      "assembly_exact": 1
+    },
+    "964": {
+      "assembly_exact": 3
+    },
+    "731": {
+      "assembly_exact": 24
+    },
+    "135577": {
+      "assembly_exact": 2
+    },
+    "43674": {
+      "assembly_exact": 2
+    },
+    "92945": {
+      "assembly_exact": 12
+    },
+    "504": {
+      "assembly_exact": 3
+    },
+    "548": {
+      "assembly_exact": 47
+    },
+    "2489010": {
+      "assembly_exact": 3
+    },
+    "2058152": {
+      "assembly_exact": 30
+    },
+    "1134687": {
+      "assembly_exact": 61
+    },
+    "571": {
+      "assembly_exact": 47
+    },
+    "2587529": {
+      "assembly_exact": 4
+    },
+    "1463165": {
+      "assembly_exact": 122
+    },
+    "244366": {
+      "assembly_exact": 90
+    },
+    "72000": {
+      "assembly_exact": 2
+    },
+    "1275": {
+      "assembly_exact": 5
+    },
+    "208223": {
+      "assembly_exact": 4
+    },
+    "283686": {
+      "assembly_exact": 2
+    },
+    "1158459": {
+      "assembly_exact": 1
+    },
+    "2055160": {
+      "assembly_exact": 1
+    },
+    "1276": {
+      "assembly_exact": 1
+    },
+    "1582": {
+      "assembly_exact": 3
+    },
+    "1597": {
+      "assembly_exact": 68
+    },
+    "47715": {
+      "assembly_exact": 41
+    },
+    "60520": {
+      "assembly_exact": 14
+    },
+    "1589": {
+      "assembly_exact": 18
+    },
+    "1590": {
+      "assembly_exact": 194,
+      "ncbi_species_proxy": 2
+    },
+    "1600": {
+      "assembly_exact": 2
+    },
+    "1579": {
+      "assembly_exact": 12
+    },
+    "1604": {
+      "assembly_exact": 9
+    },
+    "47770": {
+      "assembly_exact": 22
+    },
+    "1584": {
+      "assembly_exact": 23
+    },
+    "1596": {
+      "assembly_exact": 22
+    },
+    "1218494": {
+      "assembly_exact": 3
+    },
+    "1587": {
+      "assembly_exact": 15
+    },
+    "147802": {
+      "assembly_exact": 7
+    },
+    "33959": {
+      "assembly_exact": 15
+    },
+    "267818": {
+      "assembly_exact": 8
+    },
+    "2012495": {
+      "assembly_exact": 2
+    },
+    "2107999": {
+      "assembly_exact": 2
+    },
+    "1359": {
+      "assembly_exact": 35
+    },
+    "1363": {
+      "assembly_exact": 19
+    },
+    "1358": {
+      "assembly_exact": 69
+    },
+    "1366": {
+      "assembly_exact": 9
+    },
+    "28038": {
+      "assembly_exact": 24
+    },
+    "1599": {
+      "assembly_exact": 37
+    },
+    "29546": {
+      "assembly_exact": 4
+    },
+    "83655": {
+      "assembly_exact": 14
+    },
+    "454": {
+      "assembly_exact": 1
+    },
+    "450": {
+      "assembly_exact": 10
+    },
+    "446": {
+      "assembly_exact": 91,
+      "ncbi_species_proxy": 1
+    },
+    "28087": {
+      "assembly_exact": 1
+    },
+    "1396826": {
+      "assembly_exact": 20
+    },
+    "506591": {
+      "assembly_exact": 22
+    },
+    "61646": {
+      "assembly_exact": 6
+    },
+    "1581": {
+      "assembly_exact": 5
+    },
+    "1588": {
+      "assembly_exact": 1
+    },
+    "152331": {
+      "assembly_exact": 1
+    },
+    "174": {
+      "assembly_exact": 22
+    },
+    "173": {
+      "assembly_exact": 78
+    },
+    "29507": {
+      "assembly_exact": 5
+    },
+    "1137606": {
+      "assembly_exact": 2
+    },
+    "28182": {
+      "assembly_exact": 31
+    },
+    "28184": {
+      "assembly_exact": 10
+    },
+    "109328": {
+      "assembly_exact": 3
+    },
+    "157687": {
+      "assembly_exact": 6
+    },
+    "33964": {
+      "assembly_exact": 16
+    },
+    "115778": {
+      "assembly_exact": 5
+    },
+    "1244": {
+      "assembly_exact": 1
+    },
+    "1246": {
+      "assembly_exact": 8
+    },
+    "1245": {
+      "assembly_exact": 42
+    },
+    "33968": {
+      "assembly_exact": 1
+    },
+    "1580": {
+      "assembly_exact": 62
+    },
+    "1601": {
+      "assembly_exact": 1
+    },
+    "1622": {
+      "assembly_exact": 3
+    },
+    "1623": {
+      "assembly_exact": 2
+    },
+    "1624": {
+      "assembly_exact": 67
+    },
+    "1613": {
+      "assembly_exact": 44
+    },
+    "1598": {
+      "assembly_exact": 33
+    },
+    "1633": {
+      "assembly_exact": 2
+    },
+    "1642": {
+      "assembly_exact": 20
+    },
+    "1638": {
+      "assembly_exact": 3
+    },
+    "375175": {
+      "assembly_exact": 25
+    },
+    "1610": {
+      "assembly_exact": 1
+    },
+    "2115968": {
+      "assembly_exact": 1
+    },
+    "28031": {
+      "assembly_exact": 5
+    },
+    "1421": {
+      "assembly_exact": 7
+    },
+    "435897": {
+      "assembly_exact": 2
+    },
+    "69": {
+      "assembly_exact": 2
+    },
+    "2875764": {
+      "assembly_exact": 11
+    },
+    "1903056": {
+      "assembly_exact": 4
+    },
+    "1855823": {
+      "assembly_exact": 14
+    },
+    "69966": {
+      "assembly_exact": 9
+    },
+    "55518": {
+      "assembly_exact": 1
+    },
+    "42858": {
+      "assembly_exact": 11
+    },
+    "1296": {
+      "assembly_exact": 23
+    },
+    "71237": {
+      "assembly_exact": 2
+    },
+    "75985": {
+      "assembly_exact": 80
+    },
+    "111844": {
+      "assembly_exact": 4
+    },
+    "85404": {
+      "assembly_exact": 4
+    },
+    "119864": {
+      "assembly_exact": 2
+    },
+    "437897": {
+      "assembly_exact": 1
+    },
+    "907": {
+      "assembly_exact": 1
+    },
+    "33970": {
+      "assembly_exact": 2
+    },
+    "221402": {
+      "assembly_exact": 2
+    },
+    "86660": {
+      "assembly_exact": 1
+    },
+    "2099": {
+      "assembly_exact": 12
+    },
+    "29562": {
+      "assembly_exact": 2
+    },
+    "2151": {
+      "assembly_exact": 7
+    },
+    "39645": {
+      "assembly_exact": 4
+    },
+    "2066070": {
+      "assembly_exact": 6
+    },
+    "2098": {
+      "assembly_exact": 14
+    },
+    "29559": {
+      "assembly_exact": 2
+    },
+    "414": {
+      "assembly_exact": 4
+    },
+    "408": {
+      "assembly_exact": 11
+    },
+    "223967": {
+      "assembly_exact": 1
+    },
+    "162426": {
+      "assembly_exact": 3
+    },
+    "82380": {
+      "assembly_exact": 1
+    },
+    "1270": {
+      "assembly_exact": 15
+    },
+    "1126": {
+      "assembly_exact": 9
+    },
+    "47850": {
+      "assembly_exact": 1
+    },
+    "2051": {
+      "assembly_exact": 1
+    },
+    "158849": {
+      "assembly_exact": 14
+    },
+    "1525": {
+      "assembly_exact": 3
+    },
+    "476": {
+      "assembly_exact": 42
+    },
+    "386891": {
+      "assembly_exact": 5
+    },
+    "480": {
+      "assembly_exact": 11
+    },
+    "34062": {
+      "assembly_exact": 5,
+      "ncbi_species_proxy": 14
+    },
+    "582": {
+      "assembly_exact": 37
+    },
+    "2027860": {
+      "assembly_exact": 5
+    },
+    "1764": {
+      "assembly_exact": 35
+    },
+    "1767": {
+      "assembly_exact": 40
+    },
+    "1768": {
+      "assembly_exact": 2
+    },
+    "1769": {
+      "assembly_exact": 1
+    },
+    "1781": {
+      "assembly_exact": 6
+    },
+    "1138383": {
+      "assembly_exact": 7
+    },
+    "1809": {
+      "assembly_exact": 8
+    },
+    "1774": {
+      "assembly_exact": 7
+    },
+    "1766": {
+      "assembly_exact": 2
+    },
+    "1795": {
+      "assembly_exact": 1
+    },
+    "1772": {
+      "assembly_exact": 14
+    },
+    "519450": {
+      "assembly_exact": 3
+    },
+    "2095": {
+      "assembly_exact": 20
+    },
+    "1179777": {
+      "assembly_exact": 7
+    },
+    "2102": {
+      "assembly_exact": 40
+    },
+    "2123": {
+      "assembly_exact": 1
+    },
+    "2096": {
+      "assembly_exact": 21
+    },
+    "2097": {
+      "assembly_exact": 1
+    },
+    "2104": {
+      "assembly_exact": 61,
+      "ncbi_species_proxy": 2
+    },
+    "2110": {
+      "assembly_exact": 3
+    },
+    "29553": {
+      "assembly_exact": 1
+    },
+    "28903": {
+      "assembly_exact": 47
+    },
+    "2113": {
+      "assembly_exact": 5
+    },
+    "29555": {
+      "assembly_exact": 1
+    },
+    "2109": {
+      "assembly_exact": 16
+    },
+    "34": {
+      "assembly_exact": 10
+    },
+    "495": {
+      "assembly_exact": 2
+    },
+    "486": {
+      "assembly_exact": 2
+    },
+    "490": {
+      "assembly_exact": 1
+    },
+    "28449": {
+      "assembly_exact": 4
+    },
+    "399": {
+      "assembly_exact": 3
+    },
+    "1397": {
+      "assembly_exact": 4
+    },
+    "1824": {
+      "assembly_exact": 3
+    },
+    "37326": {
+      "assembly_exact": 1
+    },
+    "135487": {
+      "assembly_exact": 4
+    },
+    "37329": {
+      "assembly_exact": 8
+    },
+    "37332": {
+      "assembly_exact": 1
+    },
+    "2014": {
+      "assembly_exact": 2
+    },
+    "1247": {
+      "assembly_exact": 5
+    },
+    "784": {
+      "assembly_exact": 6,
+      "ncbi_species_proxy": 1
+    },
+    "28251": {
+      "assembly_exact": 3
+    },
+    "2946593": {
+      "assembly_exact": 4
+    },
+    "847": {
+      "assembly_exact": 4
+    },
+    "37931": {
+      "assembly_exact": 7
+    },
+    "130049": {
+      "assembly_exact": 1
+    },
+    "1464": {
+      "assembly_exact": 15
+    },
+    "61624": {
+      "assembly_exact": 2
+    },
+    "59893": {
+      "assembly_exact": 4
+    },
+    "1406": {
+      "assembly_exact": 27
+    },
+    "49283": {
+      "assembly_exact": 1
+    },
+    "521520": {
+      "assembly_exact": 3
+    },
+    "93218": {
+      "assembly_exact": 3
+    },
+    "93220": {
+      "assembly_exact": 6
+    },
+    "549": {
+      "assembly_exact": 58
+    },
+    "553": {
+      "assembly_exact": 31
+    },
+    "59814": {
+      "assembly_exact": 16
+    },
+    "66269": {
+      "assembly_exact": 3
+    },
+    "470934": {
+      "assembly_exact": 9
+    },
+    "823": {
+      "assembly_exact": 21
+    },
+    "46503": {
+      "assembly_exact": 3
+    },
+    "75105": {
+      "assembly_exact": 14
+    },
+    "134537": {
+      "assembly_exact": 10
+    },
+    "311230": {
+      "assembly_exact": 6
+    },
+    "266": {
+      "assembly_exact": 3
+    },
+    "82367": {
+      "assembly_exact": 4
+    },
+    "147645": {
+      "assembly_exact": 15
+    },
+    "81408": {
+      "assembly_exact": 2
+    },
+    "1426": {
+      "assembly_exact": 9
+    },
+    "33033": {
+      "assembly_exact": 8
+    },
+    "753": {
+      "assembly_exact": 3
+    },
+    "747": {
+      "assembly_exact": 108
+    },
+    "1201031": {
+      "assembly_exact": 12
+    },
+    "29471": {
+      "assembly_exact": 4
+    },
+    "180957": {
+      "assembly_exact": 15
+    },
+    "554": {
+      "assembly_exact": 10
+    },
+    "1905730": {
+      "assembly_exact": 12
+    },
+    "2778550": {
+      "assembly_exact": 3
+    },
+    "2042057": {
+      "assembly_exact": 1
+    },
+    "2488639": {
+      "assembly_exact": 5
+    },
+    "1254": {
+      "assembly_exact": 30
+    },
+    "187452": {
+      "assembly_exact": 7
+    },
+    "51663": {
+      "assembly_exact": 13
+    },
+    "1255": {
+      "assembly_exact": 40
+    },
+    "228899": {
+      "assembly_exact": 5
+    },
+    "450367": {
+      "assembly_exact": 12
+    },
+    "1478": {
+      "assembly_exact": 3
+    },
+    "60890": {
+      "assembly_exact": 9
+    },
+    "221822": {
+      "assembly_exact": 106
+    },
+    "1580596": {
+      "assembly_exact": 40
+    },
+    "33025": {
+      "assembly_exact": 3
+    },
+    "357276": {
+      "assembly_exact": 10
+    },
+    "821": {
+      "assembly_exact": 11
+    },
+    "38293": {
+      "assembly_exact": 48
+    },
+    "2218628": {
+      "assembly_exact": 2
+    },
+    "1238": {
+      "assembly_exact": 137
+    },
+    "1160": {
+      "assembly_exact": 12
+    },
+    "703": {
+      "assembly_exact": 5
+    },
+    "576611": {
+      "assembly_exact": 3
+    },
+    "576610": {
+      "assembly_exact": 4
+    },
+    "2527775": {
+      "assembly_exact": 5
+    },
+    "837": {
+      "assembly_exact": 25
+    },
+    "43767": {
+      "assembly_exact": 20
+    },
+    "77095": {
+      "assembly_exact": 2
+    },
+    "2913614": {
+      "assembly_exact": 3
+    },
+    "28129": {
+      "assembly_exact": 4
+    },
+    "28131": {
+      "assembly_exact": 23
+    },
+    "1177574": {
+      "assembly_exact": 2
+    },
+    "28132": {
+      "assembly_exact": 24
+    },
+    "28133": {
+      "assembly_exact": 5
+    },
+    "412384": {
+      "assembly_exact": 21
+    },
+    "86664": {
+      "assembly_exact": 4
+    },
+    "1404": {
+      "assembly_exact": 81
+    },
+    "1219": {
+      "assembly_exact": 15
+    },
+    "1744": {
+      "assembly_exact": 21
+    },
+    "584": {
+      "assembly_exact": 85
+    },
+    "1574161": {
+      "assembly_exact": 17
+    },
+    "585": {
+      "assembly_exact": 9
+    },
+    "126385": {
+      "assembly_exact": 31
+    },
+    "587": {
+      "assembly_exact": 18
+    },
+    "588": {
+      "assembly_exact": 25
+    },
+    "333965": {
+      "assembly_exact": 1
+    },
+    "43657": {
+      "assembly_exact": 2
+    },
+    "43662": {
+      "assembly_exact": 6
+    },
+    "2834768": {
+      "assembly_exact": 5
+    },
+    "43263": {
+      "assembly_exact": 2
+    },
+    "47877": {
+      "assembly_exact": 29
+    },
+    "2219225": {
+      "assembly_exact": 4
+    },
+    "2565368": {
+      "assembly_exact": 5
+    },
+    "46257": {
+      "assembly_exact": 3
+    },
+    "47878": {
+      "assembly_exact": 2
+    },
+    "930166": {
+      "assembly_exact": 8
+    },
+    "587753": {
+      "assembly_exact": 60
+    },
+    "53408": {
+      "assembly_exact": 5
+    },
+    "53409": {
+      "assembly_exact": 2
+    },
+    "47879": {
+      "assembly_exact": 2
+    },
+    "1163398": {
+      "assembly_exact": 1
+    },
+    "312306": {
+      "assembly_exact": 1
+    },
+    "294": {
+      "assembly_exact": 15
+    },
+    "296": {
+      "assembly_exact": 5
+    },
+    "104087": {
+      "assembly_exact": 2
+    },
+    "47880": {
+      "assembly_exact": 2
+    },
+    "2666183": {
+      "assembly_exact": 4
+    },
+    "198620": {
+      "assembly_exact": 1
+    },
+    "86185": {
+      "assembly_exact": 2
+    },
+    "300": {
+      "assembly_exact": 4
+    },
+    "76759": {
+      "assembly_exact": 10
+    },
+    "321662": {
+      "assembly_exact": 2
+    },
+    "78327": {
+      "assembly_exact": 4
+    },
+    "76758": {
+      "assembly_exact": 5
+    },
+    "47885": {
+      "assembly_exact": 3
+    },
+    "319939": {
+      "assembly_exact": 2
+    },
+    "2994495": {
+      "assembly_exact": 4
+    },
+    "157782": {
+      "assembly_exact": 1
+    },
+    "70775": {
+      "assembly_exact": 1
+    },
+    "380021": {
+      "assembly_exact": 19
+    },
+    "303": {
+      "assembly_exact": 51
+    },
+    "76760": {
+      "assembly_exact": 3
+    },
+    "29438": {
+      "assembly_exact": 7
+    },
+    "2842346": {
+      "assembly_exact": 5
+    },
+    "321846": {
+      "assembly_exact": 2
+    },
+    "47883": {
+      "assembly_exact": 7
+    },
+    "317": {
+      "assembly_exact": 52
+    },
+    "251701": {
+      "assembly_exact": 13
+    },
+    "2725477": {
+      "assembly_exact": 1
+    },
+    "76761": {
+      "assembly_exact": 2
+    },
+    "2505979": {
+      "assembly_exact": 1
+    },
+    "1402135": {
+      "assembly_exact": 171
+    },
+    "128785": {
+      "assembly_exact": 3
+    },
+    "192812": {
+      "assembly_exact": 2
+    },
+    "2703885": {
+      "assembly_exact": 3
+    },
+    "1310165": {
+      "assembly_exact": 30
+    },
+    "305": {
+      "assembly_exact": 41
+    },
+    "28097": {
+      "assembly_exact": 5
+    },
+    "94132": {
+      "assembly_exact": 1
+    },
+    "54291": {
+      "assembly_exact": 37
+    },
+    "575": {
+      "assembly_exact": 15
+    },
+    "577": {
+      "assembly_exact": 2
+    },
+    "145458": {
+      "assembly_exact": 2
+    },
+    "1646": {
+      "assembly_exact": 1
+    },
+    "29449": {
+      "assembly_exact": 20
+    },
+    "56730": {
+      "assembly_exact": 3
+    },
+    "384": {
+      "assembly_exact": 95
+    },
+    "396": {
+      "assembly_exact": 61
+    },
+    "2081791": {
+      "assembly_exact": 5
+    },
+    "666685": {
+      "assembly_exact": 8
+    },
+    "1061": {
+      "assembly_exact": 1
+    },
+    "191292": {
+      "assembly_exact": 3
+    },
+    "1833": {
+      "assembly_exact": 22
+    },
+    "1828": {
+      "assembly_exact": 3
+    },
+    "37919": {
+      "assembly_exact": 12
+    },
+    "103816": {
+      "assembly_exact": 32
+    },
+    "334542": {
+      "assembly_exact": 30
+    },
+    "1829": {
+      "assembly_exact": 8
+    },
+    "1830": {
+      "assembly_exact": 11
+    },
+    "232537": {
+      "assembly_exact": 1
+    },
+    "1076": {
+      "assembly_exact": 11
+    },
+    "1085": {
+      "assembly_exact": 1
+    },
+    "29549": {
+      "assembly_exact": 3
+    },
+    "33989": {
+      "assembly_exact": 3
+    },
+    "33990": {
+      "assembly_exact": 1
+    },
+    "781": {
+      "assembly_exact": 4
+    },
+    "35790": {
+      "assembly_exact": 12
+    },
+    "782": {
+      "assembly_exact": 8
+    },
+    "783": {
+      "assembly_exact": 12
+    },
+    "785": {
+      "assembly_exact": 2
+    },
+    "34085": {
+      "assembly_exact": 33
+    },
+    "187304": {
+      "assembly_exact": 15
+    },
+    "207340": {
+      "assembly_exact": 11
+    },
+    "189381": {
+      "assembly_exact": 1
+    },
+    "172042": {
+      "assembly_exact": 1
+    },
+    "2047": {
+      "assembly_exact": 1
+    },
+    "37923": {
+      "assembly_exact": 1
+    },
+    "43675": {
+      "assembly_exact": 2
+    },
+    "1836": {
+      "assembly_exact": 1
+    },
+    "146919": {
+      "assembly_exact": 16
+    },
+    "1908198": {
+      "assembly_exact": 4
+    },
+    "54736": {
+      "assembly_exact": 11
+    },
+    "1660": {
+      "assembly_exact": 1
+    },
+    "240427": {
+      "assembly_exact": 9
+    },
+    "47917": {
+      "assembly_exact": 6
+    },
+    "614": {
+      "assembly_exact": 8
+    },
+    "615": {
+      "assembly_exact": 98
+    },
+    "82996": {
+      "assembly_exact": 12
+    },
+    "28151": {
+      "assembly_exact": 7
+    },
+    "61652": {
+      "assembly_exact": 4
+    },
+    "138074": {
+      "assembly_exact": 5
+    },
+    "300181": {
+      "assembly_exact": 10
+    },
+    "38313": {
+      "assembly_exact": 18
+    },
+    "62322": {
+      "assembly_exact": 22
+    },
+    "24": {
+      "assembly_exact": 5
+    },
+    "332186": {
+      "assembly_exact": 11
+    },
+    "621": {
+      "assembly_exact": 20
+    },
+    "622": {
+      "assembly_exact": 38
+    },
+    "623": {
+      "assembly_exact": 106
+    },
+    "563": {
+      "assembly_exact": 1
+    },
+    "380": {
+      "assembly_exact": 14
+    },
+    "110321": {
+      "assembly_exact": 4
+    },
+    "382": {
+      "assembly_exact": 74,
+      "ncbi_species_proxy": 5
+    },
+    "258": {
+      "assembly_exact": 1
+    },
+    "13690": {
+      "assembly_exact": 15,
+      "ncbi_species_proxy": 8
+    },
+    "13689": {
+      "assembly_exact": 5
+    },
+    "2133": {
+      "assembly_exact": 20
+    },
+    "2144": {
+      "assembly_exact": 1
+    },
+    "269673": {
+      "assembly_exact": 2
+    },
+    "1571": {
+      "assembly_exact": 2
+    },
+    "985762": {
+      "assembly_exact": 9
+    },
+    "985002": {
+      "assembly_exact": 18
+    },
+    "29378": {
+      "assembly_exact": 8
+    },
+    "29379": {
+      "assembly_exact": 1
+    },
+    "29388": {
+      "assembly_exact": 14
+    },
+    "29380": {
+      "assembly_exact": 4
+    },
+    "1281": {
+      "assembly_exact": 15
+    },
+    "46126": {
+      "assembly_exact": 6
+    },
+    "70255": {
+      "assembly_exact": 3
+    },
+    "53344": {
+      "assembly_exact": 9
+    },
+    "246432": {
+      "assembly_exact": 18
+    },
+    "46127": {
+      "assembly_exact": 1
+    },
+    "1283": {
+      "assembly_exact": 26
+    },
+    "1290": {
+      "assembly_exact": 21
+    },
+    "1284": {
+      "assembly_exact": 2
+    },
+    "28035": {
+      "assembly_exact": 23
+    },
+    "214473": {
+      "assembly_exact": 3
+    },
+    "45972": {
+      "assembly_exact": 10
+    },
+    "283734": {
+      "assembly_exact": 31
+    },
+    "33028": {
+      "assembly_exact": 1
+    },
+    "29385": {
+      "assembly_exact": 22
+    },
+    "1295": {
+      "assembly_exact": 2
+    },
+    "1286": {
+      "assembly_exact": 22
+    },
+    "2989771": {
+      "assembly_exact": 3
+    },
+    "1292": {
+      "assembly_exact": 16
+    },
+    "1288": {
+      "assembly_exact": 13
+    },
+    "128780": {
+      "assembly_exact": 1
+    },
+    "2045451": {
+      "assembly_exact": 1
+    },
+    "40324": {
+      "assembly_exact": 43
+    },
+    "1328": {
+      "assembly_exact": 15
+    },
+    "113107": {
+      "assembly_exact": 1
+    },
+    "1329": {
+      "assembly_exact": 5
+    },
+    "76860": {
+      "assembly_exact": 6
+    },
+    "45634": {
+      "assembly_exact": 2
+    },
+    "1334": {
+      "assembly_exact": 31
+    },
+    "1336": {
+      "assembly_exact": 21
+    },
+    "1335": {
+      "assembly_exact": 8
+    },
+    "315405": {
+      "assembly_exact": 7
+    },
+    "1302": {
+      "assembly_exact": 11
+    },
+    "1346": {
+      "assembly_exact": 6
+    },
+    "1338": {
+      "assembly_exact": 5
+    },
+    "150055": {
+      "assembly_exact": 4
+    },
+    "28037": {
+      "assembly_exact": 6
+    },
+    "1309": {
+      "assembly_exact": 21
+    },
+    "1303": {
+      "assembly_exact": 15
+    },
+    "1501662": {
+      "assembly_exact": 5
+    },
+    "1348": {
+      "assembly_exact": 6
+    },
+    "197614": {
+      "assembly_exact": 2
+    },
+    "82348": {
+      "assembly_exact": 1
+    },
+    "1340": {
+      "assembly_exact": 2
+    },
+    "361101": {
+      "assembly_exact": 1
+    },
+    "1917441": {
+      "assembly_exact": 2
+    },
+    "2686210": {
+      "assembly_exact": 3
+    },
+    "1304": {
+      "assembly_exact": 20
+    },
+    "1305": {
+      "assembly_exact": 5
+    },
+    "1310": {
+      "assembly_exact": 4
+    },
+    "1308": {
+      "assembly_exact": 68
+    },
+    "1349": {
+      "assembly_exact": 2
+    },
+    "1886": {
+      "assembly_exact": 5
+    },
+    "1642299": {
+      "assembly_exact": 2
+    },
+    "92644": {
+      "assembly_exact": 7
+    },
+    "67351": {
+      "assembly_exact": 10
+    },
+    "67258": {
+      "assembly_exact": 5
+    },
+    "1969": {
+      "assembly_exact": 1
+    },
+    "1901": {
+      "assembly_exact": 26
+    },
+    "68203": {
+      "assembly_exact": 7
+    },
+    "1920": {
+      "assembly_exact": 1
+    },
+    "1915": {
+      "assembly_exact": 1
+    },
+    "47763": {
+      "assembly_exact": 2
+    },
+    "35621": {
+      "assembly_exact": 2
+    },
+    "1971": {
+      "assembly_exact": 4
+    },
+    "1927": {
+      "assembly_exact": 9
+    },
+    "1930": {
+      "assembly_exact": 2
+    },
+    "83656": {
+      "assembly_exact": 1
+    },
+    "54571": {
+      "assembly_exact": 8
+    },
+    "74829": {
+      "assembly_exact": 2
+    },
+    "2968969": {
+      "assembly_exact": 5
+    },
+    "316": {
+      "assembly_exact": 24
+    },
+    "83219": {
+      "assembly_exact": 5
+    },
+    "60137": {
+      "assembly_exact": 7
+    },
+    "1854492": {
+      "assembly_exact": 3
+    },
+    "32046": {
+      "assembly_exact": 8
+    },
+    "1148": {
+      "assembly_exact": 19
+    },
+    "28112": {
+      "assembly_exact": 1
+    },
+    "451": {
+      "assembly_exact": 1
+    },
+    "29575": {
+      "assembly_exact": 30
+    },
+    "51669": {
+      "assembly_exact": 4
+    },
+    "187493": {
+      "assembly_exact": 1
+    },
+    "1517": {
+      "assembly_exact": 1
+    },
+    "1510": {
+      "assembly_exact": 3
+    },
+    "2336": {
+      "assembly_exact": 4
+    },
+    "274": {
+      "assembly_exact": 50
+    },
+    "1697053": {
+      "assembly_exact": 4
+    },
+    "1547": {
+      "assembly_exact": 2
+    },
+    "158": {
+      "assembly_exact": 11
+    },
+    "160": {
+      "assembly_exact": 11
+    },
+    "138851": {
+      "assembly_exact": 1
+    },
+    "409322": {
+      "assembly_exact": 1
+    },
+    "162": {
+      "assembly_exact": 6
+    },
+    "221027": {
+      "assembly_exact": 2
+    },
+    "69710": {
+      "assembly_exact": 3
+    },
+    "379347": {
+      "assembly_exact": 5
+    },
+    "2733571": {
+      "assembly_exact": 2
+    },
+    "1661": {
+      "assembly_exact": 14
+    },
+    "2061": {
+      "assembly_exact": 2
+    },
+    "2735723": {
+      "assembly_exact": 1
+    },
+    "134821": {
+      "assembly_exact": 8
+    },
+    "2130": {
+      "assembly_exact": 3
+    },
+    "2738": {
+      "assembly_exact": 12
+    },
+    "81947": {
+      "assembly_exact": 14
+    },
+    "34073": {
+      "assembly_exact": 6
+    },
+    "29466": {
+      "assembly_exact": 3
+    },
+    "663": {
+      "assembly_exact": 71
+    },
+    "55601": {
+      "assembly_exact": 27
+    },
+    "680": {
+      "assembly_exact": 44
+    },
+    "675": {
+      "assembly_exact": 4
+    },
+    "190893": {
+      "assembly_exact": 16
+    },
+    "47951": {
+      "assembly_exact": 3
+    },
+    "50719": {
+      "assembly_exact": 10
+    },
+    "676": {
+      "assembly_exact": 21
+    },
+    "29494": {
+      "assembly_exact": 20
+    },
+    "687": {
+      "assembly_exact": 2
+    },
+    "669": {
+      "assembly_exact": 36
+    },
+    "170673": {
+      "assembly_exact": 2
+    },
+    "1481663": {
+      "assembly_exact": 4
+    },
+    "674": {
+      "assembly_exact": 6
+    },
+    "691": {
+      "assembly_exact": 12
+    },
+    "28173": {
+      "assembly_exact": 13
+    },
+    "696485": {
+      "assembly_exact": 13
+    },
+    "104609": {
+      "assembly_exact": 9
+    },
+    "29497": {
+      "assembly_exact": 8
+    },
+    "672": {
+      "assembly_exact": 45
+    },
+    "1482": {
+      "assembly_exact": 3
+    },
+    "759620": {
+      "assembly_exact": 1
+    },
+    "137591": {
+      "assembly_exact": 23
+    },
+    "1583": {
+      "assembly_exact": 11
+    },
+    "165096": {
+      "assembly_exact": 2
+    },
+    "1249": {
+      "assembly_exact": 1
+    },
+    "1398": {
+      "assembly_exact": 16
+    },
+    "2917790": {
+      "assembly_exact": 3
+    },
+    "33007": {
+      "assembly_exact": 2
+    },
+    "2686077": {
+      "assembly_exact": 1
+    },
+    "2954025": {
+      "assembly_exact": 1
+    },
+    "546165": {
+      "assembly_exact": 8
+    },
+    "116598": {
+      "assembly_exact": 2
+    },
+    "163164": {
+      "assembly_exact": 6
+    },
+    "77038": {
+      "assembly_exact": 3
+    },
+    "955": {
+      "assembly_exact": 8
+    },
+    "56448": {
+      "assembly_exact": 19
+    },
+    "53413": {
+      "assembly_exact": 2
+    },
+    "339": {
+      "assembly_exact": 79
+    },
+    "346": {
+      "assembly_exact": 97
+    },
+    "56453": {
+      "assembly_exact": 5
+    },
+    "2259622": {
+      "assembly_exact": 2
+    },
+    "456327": {
+      "assembly_exact": 10
+    },
+    "48664": {
+      "assembly_exact": 13
+    },
+    "56454": {
+      "assembly_exact": 15
+    },
+    "347": {
+      "assembly_exact": 127
+    },
+    "442694": {
+      "assembly_exact": 4
+    },
+    "1985254": {
+      "assembly_exact": 25
+    },
+    "2053930": {
+      "assembly_exact": 5
+    },
+    "56458": {
+      "assembly_exact": 6
+    },
+    "343": {
+      "assembly_exact": 24
+    },
+    "3390026": {
+      "assembly_exact": 7
+    },
+    "56459": {
+      "assembly_exact": 8
+    },
+    "628": {
+      "assembly_exact": 1
+    },
+    "2371": {
+      "assembly_exact": 54
+    },
+    "1444770": {
+      "assembly_exact": 20
+    },
+    "630": {
+      "assembly_exact": 25
+    },
+    "631": {
+      "assembly_exact": 5
+    },
+    "419257": {
+      "assembly_exact": 3
+    },
+    "632": {
+      "assembly_exact": 75
+    },
+    "633": {
+      "assembly_exact": 26
+    },
+    "29486": {
+      "assembly_exact": 42
+    },
+    "1522": {
+      "assembly_exact": 2
+    },
+    "29347": {
+      "assembly_exact": 6
+    },
+    "730": {
+      "assembly_exact": 12
+    },
+    "33038": {
+      "assembly_exact": 7
+    }
+  },
+  "subtree_nodes": 9239,
+  "subtree_leaves": 1349,
+  "subtree_edges": 9238,
+  "inputs": {
+    "index_bacteria_species961_train1000/split_manifest.tsv": "b82c4038dcb89fc386e7a4f037814ab47423ea5adc3a60c2d33ef329071c7169",
+    "utils/gtdb/bac120.tree": "9034e52f25ed0caead4e2153def93ee80ba0f513a0a2f65030127839a26fe02d",
+    "utils/gtdb/bac120_metadata.tsv": "ed15bee82696e1c87e82126722db0ee3c6dcee7144cb6bb0ea9041725d247ee4"
+  },
+  "output_sha256": "e5d9b09408c5e004de6c2760afd41fe47d238af531fac51a805c3137904cac88",
+  "mapping_sha256": "d3eb5ebdd57b69b023fdcb21bb4d15222330231fc227bb1cbc92f89c4d48db67",
+  "numpy_version": "2.2.6",
+  "torch_version": "2.1.0+cu121",
+  "warning": "Missing taxa have zero vectors. No hash fallback. Train-only lookup; validation/test must use DNA only."
+}

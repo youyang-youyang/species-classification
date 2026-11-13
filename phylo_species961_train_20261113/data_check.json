@@ -1,0 +1,17 @@
+{
+  "train": {
+    "rows": 961000,
+    "phylo_shape": [
+      4,
+      64
+    ]
+  },
+  "val": {
+    "rows": 24025,
+    "phylo_shape": null
+  },
+  "test": {
+    "rows": 24025,
+    "phylo_shape": null
+  }
+}
