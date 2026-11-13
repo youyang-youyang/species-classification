@@ -7,10 +7,9 @@
 | 实验 | 状态 |
 |---|---|
 | 纯 DNA 基线 | 原配置保留 |
-| DNA＋新得分 U，验证仅 DNA | 已适配；本页第 5 节提供启动命令 |
 | DNA＋U＋P，U/P 各自独立 50% dropout | 数据已准备，但独立 dropout 逻辑和实验配置尚未接入，暂不启动 |
 
-旧 `guidance_dropout=0.5` 是 U/P 同时关闭，不等于各自独立关闭。本页 U-only 配置是 `guidance_dropout=0`、`disable_phylo=true`，不能当作目标 P/U dropout 实验。
+旧 `guidance_dropout=0.5` 是 U/P 同时关闭，不等于各自独立关闭。
 
 ## 2. 需要手动传输的文件与位置
 
@@ -20,16 +19,10 @@
 |---|---|---|
 | `/home/user/zhangguoli/species_identification/index_bacteria_species961_train1000/` | `index_bacteria_species961_train1000/` | 原始完整数据目录，约 47GiB；以前已完整传过则无需重传 |
 | `/home/user/zhangguoli/species_identification/auxiliary_species961_train_counts_cu64_20261111/window_scores_v1/` | `auxiliary_species961_train_counts_cu64_20261111/window_scores_v1/` | 新得分目录，得分二进制约 15.44GB；U-only 必需 |
-| `/home/user/zhangguoli/species_identification/phylo_species961_train_20261113/` | `phylo_species961_train_20261113/` | 进化向量及报告，整个目录约 3.1MB；为后续 P/U 实验准备 |
 | `/home/user/zhangguoli/species_identification/runs/bacteria_species_cls_v1_pretrain_v2/best_model.pt` | `runs/bacteria_species_cls_v1_pretrain_v2/best_model.pt` | 从相同预训练起点开新实验，必须传；不是 961 微调 epoch003 断点 |
+｜Docker 镜像分片 `evo2_docker_parts/`（包含 `evo2_hf_docker.tar.gz.part_*`、`md5.txt`）。｜
 
-若接收方没有训练环境，还需要之前交付的 Docker 镜像分片 `evo2_docker_parts/`（包含 `evo2_hf_docker.tar.gz.part_*`、`md5.txt`）。它不在 GitHub，源服务器确切位置未在本次核验；沿用已有交付位置。已有可用环境时无需重复传镜像。
-
-新得分目录中运行必需：`train_window_scores.f32`、`train_row_offsets.npy`、`scores_manifest.json`、`SCORES_COMPLETE`；建议完整目录传输，保留映射与检查记录。仅做生成过程追溯时，另附其父目录的 `reference_report.json`、`train_manifest.tsv`、`kmc_summary.json`。
-
-进化向量覆盖 **960/961 个物种的真实树节点**；`Candidatus Carsonella ruddii`（taxid 114186）的 9 条训练序列为零向量，已记录在报告中。不是全部 961 物种都有真实进化坐标。
-
-**不用传** KMC 计数库、KMC 临时目录、重新导出的训练参考 FASTA、旧 925GB 得分文本、GTDB 树和 metadata（除非接收方要重新生成向量）。不要重新构建或重新划分训练窗口。
+新得分目录中运行必需：`train_window_scores.f32`、`train_row_offsets.npy`、`scores_manifest.json`、`SCORES_COMPLETE`；仅做生成过程追溯时，另附其父目录的 `reference_report.json`、`train_manifest.tsv`、`kmc_summary.json`。
 
 放好后的主要目录：
 
@@ -68,8 +61,6 @@ species-classification/
 git clone https://github.com/youyang-youyang/species-classification.git
 cd species-classification
 ```
-
-已有仓库，在仓库根目录执行 `git pull --ff-only origin main`。若提示本地修改冲突，先保留并处理本地修改，不要强制覆盖。
 
 以下 Docker 示例使用已有交付镜像 `evo2_hf:cuda12.4`，目标 Linux x86_64，主机需安装 Docker、NVIDIA 驱动及 NVIDIA Container Toolkit。镜像是否在目标机可用须通过第 4 节验证；本次未在接收方机器测试。
 
