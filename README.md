@@ -1,110 +1,177 @@
-# 961 物种训练：接收方按本页执行（Docker 版）
+# 961 物种实验：文件交付与运行
 
-> **961 物种辅助输入实验（2026-11-13 更新）**
->
-> - 新得分 U 的交付、验证与独立实验配置：[961得分交付与运行](tests/data/961得分交付与运行.md)。
-> - 训练用进化向量 P 的交付与覆盖率：[961进化向量交付](tests/data/961进化向量交付.md)。真实树向量覆盖 960/961 物种，缺失物种使用零向量。
-> - 代码已支持 compact 训练得分；验证、测试保持纯 DNA。P/U **独立各 50% dropout 尚未实现**，旧 guidance_dropout 是联合丢弃。
-> - 大型得分、数据和权重单独交付，不包含在本 Git 仓库。以下保留原 Docker 训练交付流程。
+更新：2026-11-13。接收方从本页按顺序执行。代码从 GitHub 获取，数据与权重另行传输。
 
+## 1. 当前可以运行什么
 
-## 1. 需额外下载并准备的交付文件
+| 实验 | 状态 |
+|---|---|
+| 纯 DNA 基线 | 原配置保留 |
+| DNA＋新得分 U，验证仅 DNA | 已适配；本页第 5 节提供启动命令 |
+| DNA＋U＋P，U/P 各自独立 50% dropout | 数据已准备，但独立 dropout 逻辑和实验配置尚未接入，暂不启动 |
 
-目标机器为 **Linux x86_64 + GPU（NVIDIA 驱动支持 CUDA 12.1/12.4 及以上）**，需预先安装 Docker 与 `nvidia-container-toolkit`，并预留足够的磁盘空间（数据解压约 47G + 镜像解压与后续 checkpoint 空间）。
+旧 `guidance_dropout=0.5` 是 U/P 同时关闭，不等于各自独立关闭。本页 U-only 配置是 `guidance_dropout=0`、`disable_phylo=true`，不能当作目标 P/U dropout 实验。
 
-| 交付内容 | 说明 | 最终放置位置 |
+## 2. 需要手动传输的文件与位置
+
+右列路径均相对于接收方的 `species-classification/` 仓库根目录。目录应原样传输，不能重写 FASTA 换行或 pickle 内容。
+
+| 源服务器完整路径 | 接收方放置位置 | 用途 |
 |---|---|---|
-| 数据分片文件 `index_bacteria_part_*` | `index_bacteria.tar.gz` 的分片文件（`part_aa` ~ `part_ad` 等，解压后约 47G；FASTA 保持原样不改换行） | 解压至仓库根目录 `species-classification/index_bacteria_species961_train1000/` |
-| Docker 镜像分片 `evo2_docker_parts/` | 含 `evo2_hf_docker.tar.gz.part_*` 与 `md5.txt` | 任意目录（导入后可删除） |
-| 预训练权重 `best_model.pt`（若配置需要） | 若本次不是从零初始化、需基于预训练底座微调，请一并下载 | 例如 `species-classification/runs_pretrained/best_model.pt` |
+| `/home/user/zhangguoli/species_identification/index_bacteria_species961_train1000/` | `index_bacteria_species961_train1000/` | 原始完整数据目录，约 47GiB；以前已完整传过则无需重传 |
+| `/home/user/zhangguoli/species_identification/auxiliary_species961_train_counts_cu64_20261111/window_scores_v1/` | `auxiliary_species961_train_counts_cu64_20261111/window_scores_v1/` | 新得分目录，得分二进制约 15.44GB；U-only 必需 |
+| `/home/user/zhangguoli/species_identification/phylo_species961_train_20261113/` | `phylo_species961_train_20261113/` | 进化向量及报告，整个目录约 3.1MB；为后续 P/U 实验准备 |
+| `/home/user/zhangguoli/species_identification/runs/bacteria_species_cls_v1_pretrain_v2/best_model.pt` | `runs/bacteria_species_cls_v1_pretrain_v2/best_model.pt` | 从相同预训练起点开新实验，必须传；不是 961 微调 epoch003 断点 |
 
----
+若接收方没有训练环境，还需要之前交付的 Docker 镜像分片 `evo2_docker_parts/`（包含 `evo2_hf_docker.tar.gz.part_*`、`md5.txt`）。它不在 GitHub，源服务器确切位置未在本次核验；沿用已有交付位置。已有可用环境时无需重复传镜像。
 
-## 2. 拉取代码、合并数据与导入 Docker 镜像
+新得分目录中运行必需：`train_window_scores.f32`、`train_row_offsets.npy`、`scores_manifest.json`、`SCORES_COMPLETE`；建议完整目录传输，保留映射与检查记录。仅做生成过程追溯时，另附其父目录的 `reference_report.json`、`train_manifest.tsv`、`kmc_summary.json`。
 
-镜像内已完整预装 Python 3.10.18、PyTorch 2.1.0+cu121 及全部运行依赖，**无需再手动创建 conda 环境或 pip 安装依赖**。
+进化向量覆盖 **960/961 个物种的真实树节点**；`Candidatus Carsonella ruddii`（taxid 114186）的 9 条训练序列为零向量，已记录在报告中。不是全部 961 物种都有真实进化坐标。
 
-### 2.1 拉取代码仓库
+**不用传** KMC 计数库、KMC 临时目录、重新导出的训练参考 FASTA、旧 925GB 得分文本、GTDB 树和 metadata（除非接收方要重新生成向量）。不要重新构建或重新划分训练窗口。
+
+放好后的主要目录：
+
+```text
+species-classification/
+├── configs/
+├── scripts/
+├── src/
+├── tests/data/
+├── index_bacteria_species961_train1000/
+│   ├── bacteria_complete.genomic.fna
+│   ├── window_index_finetune.pkl
+│   ├── taxonomy_db.pkl
+│   └── ...（其余原文件也保留）
+├── auxiliary_species961_train_counts_cu64_20261111/
+│   └── window_scores_v1/
+│       ├── train_window_scores.f32
+│       ├── train_row_offsets.npy
+│       ├── scores_manifest.json
+│       ├── SCORES_COMPLETE
+│       └── ...
+├── phylo_species961_train_20261113/
+│   ├── phylo_species961_train.pt
+│   ├── mapping.tsv
+│   ├── report.json
+│   ├── PHYLO_COMPLETE
+│   └── ...
+└── runs/bacteria_species_cls_v1_pretrain_v2/best_model.pt
+```
+
+## 3. 拉取代码与准备环境
+
+首次获取：
+
 ```bash
 git clone https://github.com/youyang-youyang/species-classification.git
 cd species-classification
 ```
 
-### 2.2 合并并解压 961 物种数据目录
-进入网盘下载的**数据分片所在目录**：
+已有仓库，在仓库根目录执行 `git pull --ff-only origin main`。若提示本地修改冲突，先保留并处理本地修改，不要强制覆盖。
+
+以下 Docker 示例使用已有交付镜像 `evo2_hf:cuda12.4`，目标 Linux x86_64，主机需安装 Docker、NVIDIA 驱动及 NVIDIA Container Toolkit。镜像是否在目标机可用须通过第 4 节验证；本次未在接收方机器测试。
+
+镜像尚未导入时，在镜像分片目录执行：
+
 ```bash
-cd /path/to/data_parts
-
-# 1. 按顺序合并所有分片还原为 index_bacteria.tar.gz
-cat index_bacteria_part_* > index_bacteria.tar.gz
-
-# 2. 解压到代码仓库根目录下
-tar -xzf index_bacteria.tar.gz -C /path/to/species-classification/
-
-# 3. 确认解压后的数据目录已在仓库根目录下
-ls -lh /path/to/species-classification/
-```
-
-### 2.3 合并并导入 Docker 镜像
-进入网盘下载的 `evo2_docker_parts/` 目录：
-```bash
-cd /path/to/evo2_docker_parts
-
-# 1. 合并分片还原完整镜像包
 cat evo2_hf_docker.tar.gz.part_* > evo2_hf_docker.tar.gz
-
-# 2. 校验文件完整性（输出 OK 表示完全无损）
 md5sum -c md5.txt
-
-# 3. 导入 Docker 镜像（导入后镜像名为 evo2_hf:cuda12.4）
+# 校验通过后导入
 docker load -i evo2_hf_docker.tar.gz
 ```
 
----
+如果收到的是旧数据分片，在其所在目录合并；将下方 `/path/to/species-classification` 替换为接收方仓库绝对路径：
 
-## 3. 检查路径配置
-
-打开 `species-classification/configs/finetune_species961_train1000_seed42.yaml`，确认其中的数据与索引路径使用的是容器内路径（推荐统一为 `/workspace/index_bacteria_species961_train1000/...` 或相对路径），不要保留原服务器的绝对路径（如 `/home/user/zhangguoli/...`），否则容器内会报 `FileNotFoundError`。
-
-> **提示**：已直接交付完整的 `index_bacteria_species961_train1000/`，**无需也不要调用**首次数据构建脚本 `run_species961_train1000.sh`，也不用执行任何断点续训（`handoff_961` / `resume.pt`）步骤。
-
----
-
-## 4. GPU 环境自检与正式启动训练
-
-以下默认使用物理 0 号 GPU（`device=0`），先进入代码仓库根目录：
 ```bash
-cd /path/to/species-classification
+cat index_bacteria_part_* > index_bacteria.tar.gz
+tar -xzf index_bacteria.tar.gz -C /path/to/species-classification
 ```
 
-### 4.1 快速验证容器内 GPU 是否正常
+直接收到完整数据目录时不执行合并。后续命令均在仓库根目录执行。新 U-only 配置已采用相对路径，无需改成原服务器用户名路径。
+
+已有 Conda 训练环境也可运行：激活环境后，将下面 Docker 命令中 `python ...` 部分直接执行即可。新建 Conda 环境的固定依赖见 `requirements-runtime.txt`，PyTorch 单独安装 2.1.0/cu121；不要盲目升级现有环境。
+
+## 4. 先验证环境与数据
+
+检查 GPU（示例使用物理 0 号卡）：
+
 ```bash
 docker run --gpus '"device=0"' --rm \
-    -v $(pwd):/workspace \
-    -w /workspace \
-    evo2_hf:cuda12.4 \
-    python -c "import torch; print('PyTorch:', torch.__version__, 'CUDA可用:', torch.cuda.is_available(), 'GPU:', torch.cuda.get_device_name(0))"
+  -v "$PWD:/workspace" -w /workspace evo2_hf:cuda12.4 \
+  python -c "import torch; print(torch.__version__); assert torch.cuda.is_available(); print(torch.cuda.get_device_name(0))"
 ```
-确认输出 `CUDA可用: True` 且能正常打印显卡型号后，再启动正式训练。
 
-### 4.2 后台启动正式训练（从 Epoch 0 开始）
+检查代码与新得分（不需要 GPU）：
+
 ```bash
-nohup docker run --gpus '"device=0"' --rm \
-    --shm-size=16g \
-    -v $(pwd):/workspace \
-    -v $(pwd):/home/user/zhangguoli/species_identification \
-    -w /workspace \
-    evo2_hf:cuda12.4 \
+docker run --rm -v "$PWD:/workspace" -w /workspace evo2_hf:cuda12.4 \
+  python tests/data/test_compact_scores.py
+
+docker run --rm -v "$PWD:/workspace" -w /workspace evo2_hf:cuda12.4 \
+  python -u tests/data/check_compact_scores.py \
+  --config configs/finetune_species961_train1000_uonly_seed42.yaml
+```
+
+应出现六项测试 `OK` 和 `COMPACT_DATA_CHECK_PASSED`。该步骤会完整核验得分 SHA256，并抽查 train/val/test 的读取，需扫描约 15GB。
+
+传好进化向量后再检查 P/U 联合读取：
+
+```bash
+docker run --rm -v "$PWD:/workspace" -w /workspace evo2_hf:cuda12.4 \
+  python -u tests/data/check_species961_phylo.py \
+  --index-dir index_bacteria_species961_train1000 \
+  --phylo-dir phylo_species961_train_20261113 \
+  --scores-dir auxiliary_species961_train_counts_cu64_20261111/window_scores_v1
+```
+
+应出现 `PHYLO_DATA_CHECK_PASSED`。源服务器已通过这些 CPU 检查：训练 P 为 `[4,64]`，U 为 `[4,4076]`；验证、测试无 P/U。它不是 GPU 正式训练成功的证明。
+
+## 5. 启动当前已支持的 U-only 实验
+
+**本节只训练 DNA＋U，不使用 P，也不是独立 50% dropout 实验。** 每物种 1000 个训练窗口（包含原有重复采样），10 epochs、seed42、batch4、累积8，原损失权重；从固定预训练权重初始化，验证和选最佳模型均只使用 DNA。
+
+```bash
+if [ -e runs/bacteria_species961_train1000_uonly_seed42_v1_finetune ]; then
+  echo '实验目录已存在，未启动；请设置新的 experiment-name，避免覆盖'
+elif [ ! -f runs/bacteria_species_cls_v1_pretrain_v2/best_model.pt ]; then
+  echo '缺少原固定预训练权重，请先完成第2节交付'
+else
+  nohup docker run --gpus '"device=0"' --rm --shm-size=16g \
+    -v "$PWD:/workspace" -w /workspace evo2_hf:cuda12.4 \
     python -u scripts/finetune.py \
-        --config configs/finetune_species961_train1000_seed42.yaml \
-        --experiment-name bacteria_species961_train1000_h100 \
-        --gpus 0 \
-    > train_961_h100.log 2>&1 < /dev/null &
+      --config configs/finetune_species961_train1000_uonly_seed42.yaml \
+      --pretrained runs/bacteria_species_cls_v1_pretrain_v2/best_model.pt \
+      --gpus 0 \
+    > tests/data/finetune_species961_uonly.log 2>&1 < /dev/null &
+fi
 ```
-*(注：如果本次微调需要指定预训练底座权重，请在命令中加上 `--pretrained /workspace/你的权重路径/best_model.pt`)*
 
-### 4.3 查看训练日志
 ```bash
-tail -f train_961_h100.log
+tail -f tests/data/finetune_species961_uonly.log
 ```
-正常启动后将看到索引加载完成，并从 `Epoch 0/9` 开始训练（总轮数 10、batch=4、累积=8，单卡运行）。
+
+预计从 `Epoch 0/9` 开始。新模型保存在 `runs/bacteria_species961_train1000_uonly_seed42_v1_finetune/`；最佳模型为其中的 `best_model.pt`。
+
+若本次目标是 **U/P 独立各 50% dropout**，完成第 4 节验证后等待相应代码和配置，不要用本节 U-only 命令替代。
+
+## 6. 对训练好的 U-only 模型进行纯 DNA 验证
+
+```bash
+docker run --gpus '"device=0"' --rm --shm-size=16g \
+  -v "$PWD:/workspace" -w /workspace evo2_hf:cuda12.4 \
+  python -u scripts/evaluate.py \
+    --config configs/finetune_species961_train1000_uonly_seed42.yaml \
+    --checkpoint runs/bacteria_species961_train1000_uonly_seed42_v1_finetune/best_model.pt \
+    --split val --input-mode sequence_only --batch-size 4 --gpus 0 \
+    --output runs/bacteria_species961_train1000_uonly_seed42_v1_finetune/val_dna_only.json
+```
+
+默认评估完整验证集（24025 窗口）。方案固定后再将 `--split val` 改为 `--split test`，输出文件改为 `test_dna_only.json`，进行最终测试；不要用测试集选择方案。
+
+## 7. 详细说明
+
+- [961得分交付与运行](tests/data/961得分交付与运行.md)：compact 偏移格式、具体代码清单、环境备注。
+- [961进化向量交付](tests/data/961进化向量交付.md)：真实映射、代理/缺失处理与拓扑训练方法。
+- 原纯 DNA 配置和旧断点续训脚本保留在仓库中；本页命令为新 U-only 实验，不恢复旧 epoch003 断点。
