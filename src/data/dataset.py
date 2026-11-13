@@ -196,6 +196,11 @@ class FinetuneDataset(Dataset):
             if score_offset != -1:
                 raise ValueError('DNA-only index must explicitly mark absent scores with -1')
             scores = None
+        elif hasattr(self.score_reader, 'read_window_scores'):
+            if score_offset != -1:
+                raise ValueError('Compact scores require the original DNA-only index')
+            scores = self.score_reader.read_window_scores(
+                seq_info.accession, window_start, self.target_token_len)
         else:
             if score_offset < 0:
                 raise ValueError('Scores absent; use the generated DNA-only data configuration')

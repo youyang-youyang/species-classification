@@ -26,3 +26,12 @@ __pycache__/
 configs/finetune_species961_h100.yaml
 *.tar
 *.bundle
+
+# Compact auxiliary data are transferred separately
+*.f32
+*.partial
+/auxiliary_species961*/
+/tools/kmc_api_v3.2.1/
+/backups/
+
+/phylo_species961*/

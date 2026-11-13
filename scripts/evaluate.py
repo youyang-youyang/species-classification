@@ -264,6 +264,7 @@ from src.model.model import build_model
 from src.data.dataset import FinetuneDataset, collate_finetune
 from src.data.fna_reader import FNAReader
 from src.data.score_reader import ScoreReader
+from src.data.compact_scores import CompactScoreReader
 from src.data.taxonomy import TaxonomyDB
 
 
@@ -613,7 +614,18 @@ def main():
 
     # Reader
     fna_reader = FNAReader(config.data.fna_file)
-    score_reader = None if config.data.dna_only else ScoreReader(config.data.scores_file, config.data.scores_bin_file)
+    if config.data.compact_scores_dir:
+        if args.input_mode in ('sequence_only', 'no_uniqueness'):
+            score_reader = None
+        elif args.split != 'train':
+            raise ValueError('Compact scores cover train only; evaluate val/test with --input-mode sequence_only')
+        else:
+            score_reader = CompactScoreReader(
+                config.data.compact_scores_dir,
+                os.path.join(config.data.index_dir, 'window_index_finetune.pkl'),
+                config.data.window_size_bp, config.model.kmer_size)
+    else:
+        score_reader = None if config.data.dna_only else ScoreReader(config.data.scores_file, config.data.scores_bin_file)
 
     # 加载 GTDB 进化向量查找表
     phylo_dict = None

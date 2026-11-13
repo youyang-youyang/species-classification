@@ -64,6 +64,7 @@ class DataConfig:
     # === 索引/缓存路径 ===
     index_dir: str = "./index_bacteria"
     scores_bin_file: str = ""  # 预转换的二进制唯一性评分文件 (可选)
+    compact_scores_dir: str = ""  # Verified compact train-window scores
     dna_only: bool = False  # 无 P/U 的纯 DNA 数据，禁止读取评分或使用引导输入
     # === 窗口参数 ===
     window_size_bp: int = 4096          # 主窗口大小

@@ -30,6 +30,7 @@ from src.model.losses import SpeciesClassificationLoss
 from src.data.dataset import FinetuneDataset, collate_finetune
 from src.data.fna_reader import FNAReader
 from src.data.score_reader import ScoreReader
+from src.data.compact_scores import CompactScoreReader
 from src.data.taxonomy import TaxonomyDB
 from src.training.trainer import Trainer
 
@@ -340,10 +341,16 @@ def main():
 
     # 创建 Reader
     fna_reader = FNAReader(config.data.fna_file)
-    score_reader = None if config.data.dna_only else ScoreReader(
-        config.data.scores_file,
-        config.data.scores_bin_file,
-    )
+    compact_scores = bool(config.data.compact_scores_dir)
+    if compact_scores and config.data.dna_only:
+        raise ValueError('Set dna_only=false to enable compact training scores')
+    if compact_scores:
+        print('[Finetune] Verifying compact scores and frozen training index...', flush=True)
+        score_reader = CompactScoreReader(config.data.compact_scores_dir, index_path,
+                                         config.data.window_size_bp, config.model.kmer_size)
+    else:
+        score_reader = None if config.data.dna_only else ScoreReader(
+            config.data.scores_file, config.data.scores_bin_file)
 
     # 创建 Dataset
     train_dataset = FinetuneDataset(
@@ -361,11 +368,11 @@ def main():
         val_dataset = FinetuneDataset(
             window_index=val_windows,
             fna_reader=fna_reader,
-            score_reader=score_reader,
+            score_reader=None if compact_scores else score_reader,
             taxonomy_db=taxonomy_db,
             window_size_bp=config.data.window_size_bp,
             kmer_size=config.model.kmer_size,
-            phylo_dict=phylo_dict,
+            phylo_dict=None if compact_scores else phylo_dict,
         )
 
     # DataLoader
