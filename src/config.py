@@ -88,6 +88,7 @@ class TrainingConfig:
     finetune_epochs: int = 50
     finetune_lr: float = 2e-5
     finetune_weight_decay: float = 0.01
+    guidance_dropout_mode: str = "joint"  # joint or independent per micro-batch
     guidance_dropout: float = 0.0  # 同时关闭 P/U 的训练 batch 概率；微调验证始终仅 DNA
     disable_phylo: bool = False  # 始终关闭 P；此时 guidance_dropout 只控制 U
     # === 通用训练参数 ===

@@ -125,7 +125,7 @@ class MixedSpeciesSampler:
 
 
 def finetune_forward_fn(model, batch, device, loss_fn=None, guidance_dropout=0.0,
-                        disable_phylo=False):
+                        disable_phylo=False, guidance_dropout_mode="joint"):
     """
     微调前向传播回调
 
@@ -135,20 +135,27 @@ def finetune_forward_fn(model, batch, device, loss_fn=None, guidance_dropout=0.0
     """
     # 每个前向 micro-batch 抽一次；同一 DDP 步骤所有 rank 使用相同模式。
     # 验证不抽样，固定采用与 predict.py 一致的纯 DNA 输入。
-    drop_guidance = not model.training
+    if guidance_dropout_mode not in ('joint', 'independent'):
+        raise ValueError('Unknown guidance dropout mode')
+    drop_u = drop_p = not model.training
     if model.training:
         if guidance_dropout >= 1.0:
-            drop_guidance = True
+            drop_u = drop_p = True
         elif guidance_dropout > 0.0:
-            draw = torch.rand((), device=device)
+            count = 2 if guidance_dropout_mode == 'independent' else 1
+            draw = torch.rand(count, device=device)
             if dist.is_available() and dist.is_initialized():
                 dist.broadcast(draw, src=0)
-            drop_guidance = draw.item() < guidance_dropout
-
+            drop_u = draw[0].item() < guidance_dropout
+            drop_p = draw[-1].item() < guidance_dropout
+    drop_p = drop_p or disable_phylo
     bases_21 = batch['bases_21'].to(device)
-    uniqueness_scores = None if drop_guidance else batch['uniqueness_scores'].to(device)
+    uniqueness_scores = None if drop_u else batch['uniqueness_scores'].to(device)
     phylo_vecs = (batch['phylo_vecs'].to(device)
-                  if not drop_guidance and not disable_phylo and 'phylo_vecs' in batch else None)
+                  if not drop_p and 'phylo_vecs' in batch else None)
+    if model.training and guidance_dropout_mode == 'independent' and not disable_phylo and 'phylo_vecs' not in batch:
+        raise ValueError('Independent P/U dropout requires phylo vectors')
+    drop_guidance = uniqueness_scores is None and phylo_vecs is None
     labels = {k: v.to(device) for k, v in batch['labels'].items()}
 
     # 必须经过 DDP.forward，不能绕过包装器直接调用 model.module。
@@ -171,6 +178,8 @@ def finetune_forward_fn(model, batch, device, loss_fn=None, guidance_dropout=0.0
                     acc = (preds == level_labels[valid]).float().mean().item()
                     metrics[f'{level}_acc'] = acc
 
+    metrics['u_drop_rate'] = float(uniqueness_scores is None)
+    metrics['p_drop_rate'] = float(phylo_vecs is None)
     metrics['guidance_drop_rate'] = float(drop_guidance)
     mode = 'dna_only' if drop_guidance else 'guided'
     metrics[f'{mode}_L_total'] = metrics['L_total']
@@ -229,6 +238,8 @@ def main():
         config.training.guidance_dropout = args.guidance_dropout
     if not 0.0 <= config.training.guidance_dropout <= 1.0:
         raise ValueError('guidance_dropout must be finite and between 0 and 1')
+    if config.training.guidance_dropout_mode not in ('joint', 'independent'):
+        raise ValueError('guidance_dropout_mode must be joint or independent')
     if config.data.dna_only:
         if args.guidance_dropout is not None and args.guidance_dropout != 1.0:
             parser.error('DNA-only data cannot enable P/U guidance')
@@ -281,8 +292,10 @@ def main():
     torch.manual_seed(config.seed + local_rank)
     np.random.seed(config.seed + local_rank)
     if local_rank == 0:
-        guidance_mode = 'U-only dropout (P disabled)' if config.training.disable_phylo else 'Joint P/U dropout'
-        print(f'[Finetune] {guidance_mode}={config.training.guidance_dropout}; '
+        guidance_mode = ('U-only dropout (P disabled)' if config.training.disable_phylo else
+                         ('Independent P/U dropout' if config.training.guidance_dropout_mode == 'independent'
+                          else 'Joint P/U dropout'))
+        print(f'[Finetune] dropout_mode={config.training.guidance_dropout_mode}; {guidance_mode}={config.training.guidance_dropout}; '
               'validation and best-model selection use DNA only.', flush=True)
 
     # 加载分类数据库
@@ -336,6 +349,8 @@ def main():
         print(f"[Finetune] 加载 GTDB 进化向量库 (Triple-Gated): {phylo_path}")
         phylo_dict = torch.load(phylo_path, map_location='cpu', weights_only=False)
         print(f"  已成功读取 {len(phylo_dict):,} 条菌株进化向量。")
+    elif config.training.guidance_dropout_mode == "independent":
+        raise FileNotFoundError("Independent P/U dropout requires phylo_file: " + phylo_path)
     else:
         print("[Finetune] Warning: 未指定或未找到 phylo_file，三重门控进化分支以全 0 向量兜底。")
 
@@ -490,7 +505,8 @@ def main():
         num_epochs=config.training.finetune_epochs,
         forward_fn=partial(finetune_forward_fn,
                            guidance_dropout=config.training.guidance_dropout,
-                           disable_phylo=config.training.disable_phylo),
+                           disable_phylo=config.training.disable_phylo,
+                           guidance_dropout_mode=config.training.guidance_dropout_mode),
         metric_key='species_acc',
         save_interval=config.training.save_interval,
         early_stop_patience=config.training.early_stop_patience,
